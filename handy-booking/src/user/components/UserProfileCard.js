@@ -7,7 +7,7 @@ export class Feadback extends Component {
     //Start Feadback Loop
         const feadbackdata = this.props.feadbacksData.map((feadback, index ) =>(
             <div className="col-lg-20 col-md-20 col-sm-20" key={index}>
-                <div className="single-feedback">
+                <div className="user-profile">
                     <div className="client-info">
                         <div className="img">
                             <img src={feadback.image} alt="client" />

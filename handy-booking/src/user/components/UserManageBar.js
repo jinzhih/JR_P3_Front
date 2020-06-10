@@ -24,50 +24,50 @@ export default function UserManageBar() {
 
   return (
     <List className={classes.root}>
-      <ListItem>
+      <ListItem button>
         <ListItemAvatar>
           <Avatar>
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-      </ListItem>
+        <ListItemText primary="Photos"  />
+      </ListItem >
       <Divider variant="inset" component="li" />
-      <ListItem>
+      <ListItem button> 
         <ListItemAvatar>
           <Avatar>
             <WorkIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work" secondary="Jan 7, 2014" />
+        <ListItemText primary="Work"  />
       </ListItem>
       <Divider variant="inset" component="li" />
   
-      <ListItem>
+      <ListItem button>
         <ListItemAvatar>
           <Avatar>
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+        <ListItemText primary="Photos" />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem>
+      <ListItem button>
         <ListItemAvatar>
           <Avatar>
             <WorkIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work" secondary="Jan 7, 2014" />
+        <ListItemText primary="Work"  />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem>
+      <ListItem button>
         <ListItemAvatar>
           <Avatar>
             <BeachAccessIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Vacation" secondary="July 20, 2014" />
+        <ListItemText primary="Vacation"  />
       </ListItem>
     </List>
   );
