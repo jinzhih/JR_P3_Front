@@ -1415,31 +1415,43 @@ Feedback Area CSS
   background: #71c21b;
 }
 
-.single-feedback .client-info {
+.user-profile {
+  background: #ffffff;
+ 
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 25px;
+  z-index: 1;
+  position: relative;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.user-profile .client-info {
   position: relative;
   padding-left: 118px;
   margin-bottom: 20px;
 }
 
-.single-feedback .client-info .img {
+.user-profile .client-info .img {
   position: absolute;
   left: 0;
   top: -45px;
   width: 100px;
 }
 
-.single-feedback .client-info .img img {
+.user-profile .client-info .img img {
   border-radius: 0 20px 0 0;
 }
 
-.single-feedback .client-info h4 {
+.user-profile .client-info h4 {
   font-size: 20px;
   font-weight: 500;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-.single-feedback .client-info span {
+.user-profile .client-info span {
   display: block;
   font-size: 14px;
   color: #828893;
@@ -1448,19 +1460,14 @@ Feedback Area CSS
   transition: 0.4s;
 }
 
-.single-feedback p {
+.user-profile p {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   margin-bottom: 0;
 }
 
-.single-feedback:hover p,
-.single-feedback:hover .client-info h4,
-.single-feedback:hover .client-info span {
-  color: #fff;
-}
 
-.single-feedback i {
+.user-profile i {
   font-size: 104px;
   position: absolute;
   top: 50%;
@@ -1470,14 +1477,64 @@ Feedback Area CSS
   margin-top: -6px;
   margin-left: -70px;
   opacity: 0.07;
+
+}
+
+
+
+.user-profile .client-info {
+  position: relative;
+  padding-left: 118px;
+  margin-bottom: 20px;
+}
+
+.user-profile .client-info .img {
+  position: absolute;
+  left: 0;
+  top: -45px;
+  width: 100px;
+}
+
+.user-profile .client-info .img img {
+  border-radius: 0 20px 0 0;
+}
+
+.user-profile .client-info h4 {
+  font-size: 20px;
+  font-weight: 500;
+
+}
+
+.user-profile .client-info span {
+  display: block;
+  font-size: 14px;
+  color: #828893;
+  margin-top: 8px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-.single-feedback:hover i {
-  color: #ffffff;
-  opacity: 0.14;
+.user-profile p {
+
+  margin-bottom: 0;
 }
+
+
+
+.user-profile i {
+  font-size: 104px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #6f8ba4;
+  z-index: -1;
+  margin-top: -6px;
+  margin-left: -70px;
+  opacity: 0.07;
+ 
+}
+
+
 
 /*================================================
 Pricing Area CSS
