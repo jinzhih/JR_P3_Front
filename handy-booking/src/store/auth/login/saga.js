@@ -23,7 +23,7 @@ function* loginUser({ payload: { user, history } }) {
              sessionStorage.setItem("authUser", JSON.stringify(response));
              yield put(loginSuccess(response));
           }
-        history.push('/dashboard');
+        history.push('/tradies');
     } catch (error) {
         yield put(apiError(error));
     }

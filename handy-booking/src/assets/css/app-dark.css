@@ -302,7 +302,7 @@ body[data-layout="horizontal"] .footer {
     transition-property: height, visibility; }
 
 .vertical-menu {
-  width: 250px;
+  width: 0px;
   z-index: 1001;
   background: #ffffff;
   bottom: 0;
@@ -313,7 +313,7 @@ body[data-layout="horizontal"] .footer {
           box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03); }
 
 .main-content {
-  margin-left: 250px;
+  margin-left: 0px;
   overflow: hidden; }
   .main-content .content {
     padding: 0 15px 10px 15px;

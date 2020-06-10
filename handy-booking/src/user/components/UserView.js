@@ -25,9 +25,8 @@ class UserView extends Component {
 
     return (
       <React.Fragment>
-        {/* NavBar: src/components/NavBar */}
+       
         <NavBar />
-
         <Container >
         <div className="user-banner" > </div>
           <Row>

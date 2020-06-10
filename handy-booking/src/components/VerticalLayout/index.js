@@ -104,15 +104,14 @@ class Layout extends Component {
 
 
         <div id="layout-wrapper">
-          <Header toggleMenuCallback={this.toggleMenuCallback} toggleRightSidebar={this.toggleRightSidebar} />
-          <Sidebar theme={this.props.leftSideBarTheme}
-            type={this.props.leftSideBarType}
-            isMobile={this.state.isMobile} />
-          <div className="main-content">
+       
+         
+          <div className="main-content1">
             {this.props.children}
           </div>
-          <Footer />
+     
         </div>
+        <Footer />
         <Rightbar />
       </React.Fragment>
     );

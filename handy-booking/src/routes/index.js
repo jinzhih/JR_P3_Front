@@ -12,12 +12,12 @@ import Dashboard from "../pages/Dashboard/index";
 
 const authProtectedRoutes = [
 
-    { path: "/dashboard", component: Dashboard },
+    { path: "/dashboard", component: UserView },
     { path: "/users", component: UserView },
     { path: "/tradies", component: UserView },
 
 	// this route should be at the end of all other routes
-	{ path: "/", exact: true, component: () => <Redirect to="/dashboard" /> }
+	{ path: "/", exact: true, component: () => <Redirect to="/tradies" /> }
 ];
 
 const publicRoutes = [
