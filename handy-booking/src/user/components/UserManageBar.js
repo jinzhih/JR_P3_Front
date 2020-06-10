@@ -30,7 +30,7 @@ export default function UserManageBar() {
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos"  />
+        <ListItemText primary="Profile"  />
       </ListItem >
       <Divider variant="inset" component="li" />
       <ListItem button> 
