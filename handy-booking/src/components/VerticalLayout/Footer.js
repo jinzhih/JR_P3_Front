@@ -1,23 +1,27 @@
-import React from "react";
-import { Row, Col } from "reactstrap";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-const Footer = () => {
-  return (
-    <React.Fragment>
-      <footer className="footer">
-        <div className="container-fluid">
-          <Row>
-            <Col sm={6}>{new Date().getFullYear()} © Skote.</Col>
-            <Col sm={6}>
-              <div className="text-sm-right d-none d-sm-block">
-                Design & Develop by Themesbrand
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </footer>
-    </React.Fragment>
-  );
+export class Footer extends Component {
+  render() {
+    return (
+        <React.Fragment>
+           
+        </React.Fragment>
+    );
+  }
+}
+Footer.PropsTypes = {
+  copyrightText: PropTypes.string,
+  footercopyrightLink1: PropTypes.string,
+  footercopyrightText1: PropTypes.string,
+  footercopyrightLink2: PropTypes.string,
+  footercopyrightText2: PropTypes.string
 };
-
+Footer.defaultProps = {
+  copyrightText: "Copyright @ 2019 Exolot. All rights reserved",
+  footercopyrightLink1: "#",
+  footercopyrightText1: "Terms & Conditions ",
+  footercopyrightLink2: "#",
+  footercopyrightText2: "Privacy Policy"
+};
 export default Footer;
