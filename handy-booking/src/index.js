@@ -6,12 +6,18 @@ import {
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './i18n';
+import { Provider } from 'react-redux';
+
+import store from './store';
 
 ReactDOM.render(
   (
+    <Provider store={store}>
     <BrowserRouter>
-      <App />
+        <App />
     </BrowserRouter>
+    </Provider>
   ),
   document.getElementById('root')
 );
