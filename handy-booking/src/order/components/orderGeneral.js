@@ -9,10 +9,14 @@ import ImageIcon from '@material-ui/icons/Image';
 import WorkIcon from '@material-ui/icons/Work';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import Divider from '@material-ui/core/Divider';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+
 import IconButton from '@material-ui/core/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import RoomIcon from '@material-ui/icons/Room';
+import EventNoteIcon from '@material-ui/icons/EventNote';
+import '../css/order.scss';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserManageBar() {
+export default function OrderGeneral() {
   const classes = useStyles();
 
   return (
@@ -31,52 +35,53 @@ export default function UserManageBar() {
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <PermIdentityIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Profile"  />
+        <ListItemText primary="POSTED BY" secondary="JESSIE HOU" />
       </ListItem >
       <Divider variant="inset" component="li" />
-      <ListItem button> 
+      <ListItem > 
         <ListItemAvatar>
           <Avatar>
-            <WorkIcon />
+            <RoomIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work"  />
+        <ListItemText primary="LOCATION" secondary="2000" />
+             <ListItemSecondaryAction>
+                <Button className="order-view_plaintBtn">VIEW LOCATION</Button>
+            </ListItemSecondaryAction>
       </ListItem>
       <Divider variant="inset" component="li" />
   
-      <ListItem button>
+      <ListItem >
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <EventNoteIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos" />
+        <ListItemText primary="DUE DATE" secondary="Jan 9, 2014" />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem button>
+      <ListItem >
         <ListItemAvatar>
           <Avatar>
             <WorkIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work"  />
+        <ListItemText primary="TAKEN BY"  secondary="ABC Pty"/>
         <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <DeleteIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
+                <Button className="order-view_plaintBtn">VIEW BUSINESS</Button>
+            </ListItemSecondaryAction>  
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem button>
+      <ListItem >
         <ListItemAvatar>
           <Avatar>
             <BeachAccessIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Vacation"  />
+        <ListItemText primary="Vacation" secondary="Jan 9, 2014" />
       </ListItem>
     </List>
   );

@@ -13,6 +13,7 @@ import HomeView from '../home/components/HomeView';
 import UserSignupView from '../signup/components/UserSignupView';
 import TradieSignupView from '../signup/components/TradieSignupView';
 
+
 const Routes = () => {
     return (
         <Switch>
@@ -23,6 +24,7 @@ const Routes = () => {
             <Route exact path="/home" component={HomeThree} />
             <Route exact path="/signup/user" component={UserSignupView} />
             <Route exact path="/signup/tradie" component={TradieSignupView} />
+            <Route exact path="/orders" component={OrderView} />
            
 
         </Switch>
