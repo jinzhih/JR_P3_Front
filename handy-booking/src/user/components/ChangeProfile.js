@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function ChangeProfile() {
   return (
     <Form style={{ margin: "50px 50px" }}>
-      <Form.Label style={{ fontSize: "15px" }}>Personal Details</Form.Label>
+      <Form.Label style={{ fontSize: "20px" }}>Personal Details</Form.Label>
       <Form.Group>
         <Form.Label>First Name</Form.Label>
         <Form.Control type="text" placeholder=" " />
@@ -22,7 +22,7 @@ function ChangeProfile() {
           borderColor: "#000000",
         }}
       />
-      <Form.Label style={{ fontSize: "15px" }}>Contact Details</Form.Label>
+      <Form.Label style={{ fontSize: "20px" }}>Contact Details</Form.Label>
       <Form.Group>
         <Form.Label>Contact Number</Form.Label>
         <Form.Control placeholder=" " />
