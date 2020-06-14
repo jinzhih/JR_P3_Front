@@ -15,6 +15,8 @@ import UserOrder from "./UserOrder";
 import UserManageBar from "./UserManageBar";
 import "../css/userBar.scss";
 import UserProfileCard from "./UserProfileCard";
+import ChangePassword from "./ChangePassword";
+import ChangeProfile from "./ChangeProfile";
 
 class UserView extends Component {
   render() {
@@ -45,10 +47,12 @@ class UserView extends Component {
               <Row>
                 {/* About: src/components/About */}
                 {/* <About /> */}
+                <ChangeProfile />
               </Row>
               <Row>
                 {/* About: src/components/About */}
                 {/* <About /> */}
+                <ChangePassword />
               </Row>
             </Col>
           </Row>
