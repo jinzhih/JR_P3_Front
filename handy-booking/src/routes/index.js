@@ -8,7 +8,7 @@ import Register from "../pages/Authentication/Register";
 import ForgetPwd from "../pages/Authentication/ForgetPassword";
 import UserView from '../user/components/UserView';
   // Dashboard
-import Dashboard from "../pages/Dashboard/index";
+//import Dashboard from "../pages/Dashboard/index";
 
 const authProtectedRoutes = [
 

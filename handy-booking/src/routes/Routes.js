@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {
-    BrowserRouter,
+    //BrowserRouter,
     Redirect,
     Route,
     Switch
@@ -9,9 +9,10 @@ import HomeThree from '../pages/HomeThree';
 import UserView from '../user/components/UserView';
 import TradieView from '../tradie/components/TradieView';
 import OrderView from '../order/components/OrderView';
-import HomeView from '../home/components/HomeView';
+//import HomeView from '../home/components/HomeView';
 import UserSignupView from '../signup/components/UserSignupView';
 import TradieSignupView from '../signup/components/TradieSignupView';
+import NewOrder from '../order/components/NewOrder';
 
 
 const Routes = () => {
@@ -24,7 +25,7 @@ const Routes = () => {
             <Route exact path="/home" component={HomeThree} />
             <Route exact path="/signup/user" component={UserSignupView} />
             <Route exact path="/signup/tradie" component={TradieSignupView} />
-            <Route exact path="/orders" component={OrderView} />
+            <Route exact path="/neworders" component={NewOrder} />
            
 
         </Switch>

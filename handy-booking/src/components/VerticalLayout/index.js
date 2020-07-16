@@ -12,8 +12,8 @@ import {
 } from "../../store/actions";
 
 // Layout Related Components
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+//import Header from "./Header";
+//import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import Rightbar from "../CommonForBoth/Rightbar";
 

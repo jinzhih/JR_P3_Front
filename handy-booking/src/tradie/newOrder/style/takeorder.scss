@@ -1,0 +1,201 @@
+@import "../../../theme/variables.scss";
+
+.client__take-order-page {
+	& .MuiCheckbox-colorSecondary,
+	& .MuiIconButton-colorSecondary {
+		&:hover {
+			background-color: #2195f31a;
+		}
+	}
+
+	& .MuiCheckbox-colorSecondary.Mui-checked,
+	& .MuiIconButton-colorSecondary.Mui-checked {
+		color: $primary-color-blue;
+		&:hover {
+			background-color: #2195f31a;
+		}
+	}
+
+	& label.Mui-focused {
+		color: $primary-color-blue;
+	}
+
+	& .MuiOutlinedInput-root {
+		&.Mui-focused fieldset {
+			border-color: $primary-color-blue;
+		}
+	}
+
+	& p#take-order {
+		padding-left: 0.63rem;
+		font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+		font-weight: 500;
+	}
+
+	& .MuiGrid-container {
+		& .MuiSvgIcon-root {
+			padding-right: 5px;
+			padding-left: 7px;
+		}
+	}
+
+	& .client__take-order-container {
+		& .take-order--toggle-button-group {
+			& div.MuiToggleButtonGroup-root {
+				margin-bottom: 1rem;
+				& .MuiButtonBase-root {
+					@media (max-width: "320px") {
+						padding: 10px 20px;
+					}
+
+					& .MuiTouchRipple-root {
+						top: auto;
+						bottom: auto;
+					}
+				}
+				& button:hover {
+					background-color: #3489cf;
+				}
+				.Mui-selected {
+					background-color: $primary-color-blue;
+					&:hover {
+						background-color: #3489cf;
+					}
+				}
+			}
+		}
+
+		& .take-order--checkbox div.MuiPaper-root {
+			background-color: #2195f31a;
+			margin-bottom: 1.2rem;
+
+			& .MuiFormControlLabel-root {
+				margin-left: 0;
+				& .MuiTypography-body1 {
+					font-size: 0.8rem;
+					color: #0008;
+				}
+			}
+		}
+
+		& .take-order--checkboxes div.MuiPaper-root {
+			background-color: #eeee;
+			margin-bottom: 1.5rem;
+			margin-top: 0.5rem;
+
+			@media (max-width: $mediaXsWidth) {
+				margin-right: 20px;
+				margin-left: 10px;
+			}
+
+			& .MuiIconButton-root {
+				margin-left: -85px;
+				margin-top: -15px;
+			}
+
+			& span.MuiTypography-body1 {
+				margin: 12px 0 0 19px;
+			}
+
+			& p.MuiTypography-body1 {
+				line-height: 0.8rem;
+				text-align: center;
+				font-size: 0.8rem;
+				padding-left: 10px;
+			}
+		}
+
+		& .take-order--radio {
+			margin-bottom: 0.6rem;
+
+			& .MuiFormGroup-root .MuiTypography-body1 {
+				color: #0009;
+				font-size: 0.9rem;
+			}
+		}
+
+		& .take-order--date-time-picker {
+			& .MuiInputBase-root {
+				display: block;
+				& .MuiOutlinedInput-input {
+					padding: 1rem 1.5rem 1rem 1rem;
+				}
+			}
+		}
+	}
+	& .take-order--card {
+		& .MuiCardContent-root {
+			padding: 0.8rem;
+		}
+		.MuiButton-containedSecondary {
+			background-color: $primary-color-blue;
+		}
+	}
+}
+
+.MuiPickersModal-dialog {
+	& .MuiPickersToolbar-toolbar,
+	& .MuiTabs-root.MuiPickerDTTabs-tabs,
+	& .MuiPickersDay-daySelected,
+	& .MuiPickersClock-pin,
+	& .MuiPickersClockPointer-pointer {
+		background-color: $primary-color-blue;
+	}
+	& .MuiPickersDay-daySelected:hover {
+		background-color: #3489cf;
+	}
+	& .MuiPickersDay-daySelected .MuiTypography-body2 {
+		color: #fff;
+	}
+	& .MuiPickersDay-current {
+		color: $primary-color-blue;
+	}
+	& .MuiPickersClockPointer-noPoint,
+	& .MuiPickersClockPointer-thumb {
+		background-color: $primary-color-blue;
+		border-color: $primary-color-blue;
+	}
+	& .MuiTabs-indicator {
+		background-color: #fff;
+	}
+}
+
+.MuiDialogActions-root button.MuiButton-textPrimary span.MuiButton-label {
+	color: $primary-color-blue;
+}
+
+.client__order-edit-page {
+	position: relative;
+	padding-left: 50px;
+	margin-bottom: 40px;
+	@media (max-width: $mediaXsWidth) {
+		padding-left: 20px;
+	}
+	& .submitButtonCircularProgress {
+		position: absolute;
+		right: 50px;
+		bottom: 0;
+	}
+	& .submitButton {
+		position: absolute;
+		right: 50px;
+		bottom: 0;
+		background-color: $primary-color-blue;
+		@media (max-width: $mediaXsWidth) {
+			position: relative;
+			margin: 20px auto auto 32vw;
+		}
+
+		&:hover {
+			background-color: $primary-color-blue;
+		}
+	}
+	& .take-order--typography {
+		& b {
+			font-size: 1.1rem;
+			& > span {
+				color: $primary-color-blue;
+			}
+		}
+	}
+}
