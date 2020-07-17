@@ -13,6 +13,7 @@ import OrderView from '../order/components/OrderView';
 import UserSignupView from '../signup/components/UserSignupView';
 import TradieSignupView from '../signup/components/TradieSignupView';
 import NewOrder from '../order/components/NewOrder';
+import NewBook from '../order/components/NewBook';
 
 
 const Routes = () => {
@@ -26,6 +27,7 @@ const Routes = () => {
             <Route exact path="/signup/user" component={UserSignupView} />
             <Route exact path="/signup/tradie" component={TradieSignupView} />
             <Route exact path="/neworders" component={NewOrder} />
+            <Route exact path="/newbooks" component={NewBook} />
            
 
         </Switch>
