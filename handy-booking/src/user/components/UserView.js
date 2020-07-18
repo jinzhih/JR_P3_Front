@@ -17,6 +17,7 @@ import "../css/userBar.scss";
 import UserProfileCard from "./UserProfileCard";
 import ChangePassword from "./ChangePassword";
 import ChangeProfile from "./ChangeProfile";
+import Trader from "./UserTrader";
 
 class UserView extends Component {
   render() {
@@ -33,7 +34,13 @@ class UserView extends Component {
               </Row>
               <Row>
                 {/* About: src/components/About */}
-                <About />
+                {/* <About /> */}
+                <ChangeProfile />
+              </Row>
+              <Row>
+                {/* About: src/components/About */}
+                {/* <About /> */}
+                <ChangePassword />
               </Row>
             </Col>
             <Col>
@@ -43,17 +50,12 @@ class UserView extends Component {
                 <UserOrder />
                 {/* <Services /> */}
               </Row>
-
               <Row>
-                {/* About: src/components/About */}
-                {/* <About /> */}
-                <ChangeProfile />
+                {/* Services: src/components/Services */}
+                <Trader />
+                {/* <Services /> */}
               </Row>
-              <Row>
-                {/* About: src/components/About */}
-                {/* <About /> */}
-                <ChangePassword />
-              </Row>
+              
             </Col>
           </Row>
         </Container>
