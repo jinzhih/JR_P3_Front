@@ -13,13 +13,16 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import LockIcon from '@material-ui/icons/Lock';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
+    marginLeft: 60
   },
 }));
 
@@ -31,7 +34,7 @@ export default function UserManageBar() {
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <AccountBoxIcon />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Profile"  />
@@ -40,20 +43,20 @@ export default function UserManageBar() {
       <ListItem button> 
         <ListItemAvatar>
           <Avatar>
-            <WorkIcon />
+            <LockIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work"  />
+        <ListItemText primary="Password"  />
       </ListItem>
       <Divider variant="inset" component="li" />
   
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <ExitToAppIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos" />
+        <ListItemText primary="Log out" />
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem button>
