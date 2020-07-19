@@ -17,7 +17,7 @@ import "../css/userBar.scss";
 import UserProfileCard from "./UserProfileCard";
 import ChangePassword from "./ChangePassword";
 import ChangeProfile from "./ChangeProfile";
-import Trader from "./UserTrader";
+import Trader from "./TraderList";
 
 class UserView extends Component {
   render() {

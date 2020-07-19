@@ -9,7 +9,7 @@
     margin: 20px 50px;
     &__header{
         text-align: center;
-        border-bottom: 2px solid grey;
+        border-bottom: 1px solid rgb(220, 220, 220);
     }
     &__detail{
         border-bottom: 2px solid grey;
@@ -22,9 +22,14 @@
         font-weight: bold;
         font-size: 25px;
     }
+    &_items{
+        padding-top: 0px;
+        margin-top: -10px;
+    }
     &__content{
         display: flex;
         flex-direction: row;
+        margin-top: 25px;
     }
     &--img{
         border: 2px solid grey;
@@ -36,6 +41,7 @@
     }
     &__name{
         margin-left: 10px;
+        padding-left: 20px;
     }
     &__comment{
         display: flex;

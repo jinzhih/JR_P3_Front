@@ -1,7 +1,19 @@
 import React from 'react';
 import "../css/trader.scss";
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 function Trader() {
+  const classes = useStyles();
   return (
     <div className="trader">
       <div className="trader__header">
@@ -17,8 +29,8 @@ function Trader() {
           <p>Big X Company</p>
         </div>
         <div className="trader__content">
-          <div className="trader--img">
-            <p>img</p>
+          <div >
+          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </div>
           <div className="trader__name">
             <p>Ding hui</p>
