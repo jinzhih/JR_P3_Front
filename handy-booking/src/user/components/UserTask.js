@@ -16,7 +16,59 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import { withStyles } from '@material-ui/core/styles';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
 
+import CloseIcon from '@material-ui/icons/Close';
+import Typography from '@material-ui/core/Typography';
+
+import ServiceType from './ServiceType';
+import RoomNumber from './RoomNumber';
+import HouseType from './HouseType';
+import Description from './Description';
+import Price from './Price';
+
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+});
+const DialogTitle = withStyles(styles)((props) => {
+  const { children, classes, onClose, ...other } = props;
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  );
+});
+
+const DialogContent = withStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+}))(MuiDialogContent);
+
+const DialogActions = withStyles((theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(1),
+  },
+}))(MuiDialogActions);
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -25,6 +77,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 50,
     marginTop: 20,
   },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+  
+  
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
@@ -45,6 +105,7 @@ export default function Service() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(true);
+
 
   const handleClick = () => {
     setOpen(!open);
@@ -147,6 +208,41 @@ export default function Service() {
           </List>
        
       </Collapse>
+      <div>
+     
+      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openBtn}>
+        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+          Post your service
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+            Choose the service type
+          </Typography>
+          <ServiceType/>
+          <Typography gutterBottom>
+            Choose room numbers
+          </Typography>
+          <RoomNumber/>
+          <Typography gutterBottom>
+            choose housing types
+          </Typography>
+          <HouseType/>
+          <Typography gutterBottom>
+            Input some descriptions
+          </Typography>
+          <Description/>
+          <Typography gutterBottom>
+            Input price
+          </Typography>
+          <Price/>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleClose} color="primary">
+            Post
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
     </div>
   );
 }
