@@ -1,193 +1,144 @@
-import React from "react";
-import { Card } from "react-bootstrap";
-import { ListGroup } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import order_img from "../../assets/images/order_img.png";
-import task_add from "../../assets/images/task_add.png";
-import task_top from "../../assets/images/task_top.png";
-function Order() {
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import IconButton from '@material-ui/core/IconButton';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    maxWidth: 500,
+    backgroundColor: theme.palette.background.paper,
+    marginLeft: 50,
+    marginTop: 20,
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+}));
+
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
+
+export default function Order() {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   return (
-    <div>
-      <Card style={{ width: "450px", margin: "20px 50px" }}>
-        <ListGroup variant="flush">
-          <ListGroup.Item style={{ height: "49px" }}>
-            <p
-              style={{ fontWeight: "bold", position: "absolute", left: "30px" }}
-            >
-              My Order >
-            </p>
-            <img
-              style={{
-                width: "47px",
-                position: "absolute",
-                right: "18px",
-              }}
-              src={task_top}
-            />
-          </ListGroup.Item>
-          <ListGroup.Item style={{ height: "59px" }}>
-            <img
-              style={{
-                width: "30px",
-                position: "absolute",
-                left: "30px",
-              }}
-              src={order_img}
-            />
-            <div style={{ position: "absolute", left: "90px" }}>
-              <div style={{ position: "relative" }}>
-                <p
-                  style={{
-                    position: "absolute",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Min
-                </p>
-                <p
-                  style={{
-                    fontSize: "5px",
-                    position: "absolute",
-                    top: "20px",
-                  }}
-                >
-                  Company·Brisbane
-                </p>
-              </div>
-            </div>
+    <div className={classes.root}>
+      <List component="nav" aria-label="title">
+        <ListItem>
+        <ListItemText primary="My Order >" />
+        </ListItem>
+        <Divider />
+        <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="Status: Accept" />
+          <ListItemSecondaryAction>
+          <ButtonGroup size="small" aria-label="small outlined button group">
+             <Button>Accept</Button>
+             <Button>Finish</Button>
+             <Button>Cancel</Button>
+          </ButtonGroup>
+          </ListItemSecondaryAction>
+        </ListItem>
+      
+      <Divider />
+      <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="Status: Finish" />
+          <ListItemSecondaryAction>
+            <ButtonGroup size="small" aria-label="small outlined button group">
+             <Button>Accept</Button>
+             <Button>Finish</Button>
+             <Button>Cancel</Button>
+            </ButtonGroup>
+          </ListItemSecondaryAction>
+        </ListItem>
+        <ListItem>
+        <ListItemSecondaryAction>
+        <IconButton
+        className={clsx(classes.expand, {
+          [classes.expandOpen]: expanded,
+        })}
+          edge="end"
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
 
-            <p
-              style={{
-                position: "absolute",
-                right: "60px",
-                top: "20px",
-                color: "grey",
-                fontWeight: "bold",
-              }}
-            >
-              Accept order
-            </p>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                right: "30px",
-                top: "20px",
-              }}
-              src={task_add}
-            />
-          </ListGroup.Item>
-          <ListGroup.Item style={{ height: "59px" }}>
-            <img
-              style={{
-                width: "30px",
-                position: "absolute",
-                left: "30px",
-              }}
-              src={order_img}
-            />
-            <div style={{ position: "absolute", left: "90px" }}>
-              <div style={{ position: "relative" }}>
-                <p
-                  style={{
-                    position: "absolute",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Min
-                </p>
-                <p
-                  style={{
-                    fontSize: "5px",
-                    position: "absolute",
-                    top: "20px",
-                  }}
-                >
-                  Company·Brisbane
-                </p>
-              </div>
-            </div>
-
-            <p
-              style={{
-                position: "absolute",
-                right: "60px",
-                top: "20px",
-                color: "grey",
-                fontWeight: "bold",
-              }}
-            >
-              Accept order
-            </p>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                right: "30px",
-                top: "20px",
-              }}
-              src={task_add}
-            />
-          </ListGroup.Item>
-          <ListGroup.Item style={{ height: "59px" }}>
-            <img
-              style={{
-                width: "30px",
-                position: "absolute",
-                left: "30px",
-              }}
-              src={order_img}
-            />
-            <div style={{ position: "absolute", left: "90px" }}>
-              <div style={{ position: "relative" }}>
-                <p
-                  style={{
-                    position: "absolute",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Min
-                </p>
-                <p
-                  style={{
-                    fontSize: "5px",
-                    position: "absolute",
-                    top: "20px",
-                  }}
-                >
-                  Company·Brisbane
-                </p>
-              </div>
-            </div>
-
-            <p
-              style={{
-                position: "absolute",
-                right: "60px",
-                top: "20px",
-                color: "grey",
-                fontWeight: "bold",
-              }}
-            >
-              Accept order
-            </p>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                right: "30px",
-                top: "20px",
-              }}
-              src={task_add}
-            />
-          </ListGroup.Item>
-          <ListGroup.Item style={{ textAlign: "center" }}>
-            Show More · 4
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
+        </List>
+        
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <List>
+          <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="Status: Accept" />
+          <ListItemSecondaryAction>
+          <ButtonGroup size="small" aria-label="small outlined button group">
+             <Button>Accept</Button>
+             <Button>Finish</Button>
+             <Button>Cancel</Button>
+          </ButtonGroup>
+          </ListItemSecondaryAction>
+        </ListItem>
+      
+      <Divider />
+      <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="Status: Finish" />
+          <ListItemSecondaryAction>
+            <ButtonGroup size="small" aria-label="small outlined button group">
+             <Button>Accept</Button>
+             <Button>Finish</Button>
+             <Button>Cancel</Button>
+            </ButtonGroup>
+          </ListItemSecondaryAction>
+        </ListItem>
+          </List>
+       
+      </Collapse>
     </div>
   );
 }
-
-export default Order;

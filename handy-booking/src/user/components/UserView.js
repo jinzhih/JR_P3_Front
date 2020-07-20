@@ -18,6 +18,7 @@ import UserProfileCard from "./UserProfileCard";
 import ChangePassword from "./ChangePassword";
 import ChangeProfile from "./ChangeProfile";
 import Trader from "./TraderList";
+import SearchBar from "./SearchBar";
 
 class UserView extends Component {
   render() {
@@ -52,6 +53,7 @@ class UserView extends Component {
               </Row>
               <Row>
                 {/* Services: src/components/Services */}
+                <SearchBar />
                 <Trader />
                 {/* <Services /> */}
               </Row>

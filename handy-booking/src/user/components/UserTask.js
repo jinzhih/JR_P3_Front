@@ -1,155 +1,137 @@
-import React from "react";
-import { Card } from "react-bootstrap";
-import { ListGroup } from "react-bootstrap";
-import task_yes_no from "../../assets/images/task_yes_no.png";
-import task_add from "../../assets/images/task_add.png";
-import task_top from "../../assets/images/task_top.png";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import "./scss/task.scss";
-function Task() {
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import IconButton from '@material-ui/core/IconButton';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    maxWidth: 500,
+    backgroundColor: theme.palette.background.paper,
+    marginLeft: 50,
+    marginTop: 20,
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+}));
+
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
+
+export default function Service() {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   return (
-    <div>
-      <Card style={{ width: "450px", margin: "20px 50px" }}>
-        <ListGroup variant="flush">
-          <ListGroup.Item style={{ height: "49px" }}>
-            <div className="cardd">
-              <p
-                style={{
-                  fontWeight: "bold",
-                  position: "absolute",
-                  left: "30px",
-                }}
-              >
-                My Task >
-              </p>
-              <img
-                style={{
-                  width: "47px",
-                  position: "absolute",
-                  right: "18px",
-                }}
-                src={task_top}
-              />
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item style={{ height: "49px" }}>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                left: "30px",
-              }}
-              src={task_yes_no}
-            />
-            <p
-              style={{
-                position: "absolute",
-                right: "170px",
-                fontWeight: "bold",
-              }}
-            >
-              task 1: xxxxxxxxx xxxxxxx
-            </p>
-            <p
-              style={{
-                position: "absolute",
-                right: "60px",
-                color: "grey",
-                fontWeight: "bold",
-              }}
-            >
-              In processing
-            </p>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                right: "30px",
-              }}
-              src={task_add}
-            />
-          </ListGroup.Item>
-          <ListGroup.Item style={{ height: "49px" }}>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                left: "30px",
-              }}
-              src={task_yes_no}
-            />
-            <p
-              style={{
-                position: "absolute",
-                right: "170px",
-                fontWeight: "bold",
-              }}
-            >
-              task 2: xxxxxxxxx xxxxxxx
-            </p>
-            <p
-              style={{
-                position: "absolute",
-                right: "60px",
-                color: "grey",
-                fontWeight: "bold",
-              }}
-            >
-              In processing
-            </p>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                right: "30px",
-              }}
-              src={task_add}
-            />
-          </ListGroup.Item>
-          <ListGroup.Item style={{ height: "49px" }}>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                left: "30px",
-              }}
-              src={task_yes_no}
-            />
-            <p
-              style={{
-                position: "absolute",
-                right: "170px",
-                fontWeight: "bold",
-              }}
-            >
-              task 3: xxxxxxxxx xxxxxxx
-            </p>
-            <p
-              style={{
-                position: "absolute",
-                right: "60px",
-                color: "grey",
-                fontWeight: "bold",
-              }}
-            >
-              In processing
-            </p>
-            <img
-              style={{
-                width: "20px",
-                position: "absolute",
-                right: "30px",
-              }}
-              src={task_add}
-            />
-          </ListGroup.Item>
-          <ListGroup.Item style={{ textAlign: "center" }}>
-            Show More · 4
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
+    <div className={classes.root}>
+      <List component="nav" aria-label="title">
+        <ListItem>
+        <ListItemText primary="My Service >" />
+        </ListItem>
+        <Divider />
+        <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="Normal" />
+          <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="add">
+                      <PostAddIcon />
+                    </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+      
+      <Divider />
+      <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="End-Lease" />
+          <ListItemSecondaryAction>
+                    <IconButton 
+          edge="end" aria-label="add">
+                      <PostAddIcon />
+                    </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+        <ListItem>
+        <ListItemSecondaryAction>
+        <IconButton
+        className={clsx(classes.expand, {
+          [classes.expandOpen]: expanded,
+        })}
+          edge="end"
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+
+        </List>
+        
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <List>
+             <Divider />
+        <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="Normal" />
+          <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="add">
+                      <PostAddIcon />
+                    </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+      
+      <Divider />
+      <ListItem button>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="End-Lease" />
+          <ListItemSecondaryAction>
+                    <IconButton 
+          edge="end" aria-label="add">
+                      <PostAddIcon />
+                    </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+          </List>
+       
+      </Collapse>
     </div>
   );
 }
-
-export default Task;

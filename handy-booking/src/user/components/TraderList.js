@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 20,
     boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0)',
     width: 500,
-    marginLeft: 60
+    marginLeft: 53
     
     
   },
@@ -59,6 +59,7 @@ export default function TraderList() {
     <Card className={classes.root}>
       <CardHeader className="trader__header"
        title="Trader List"
+       
       />
      
       <CardContent>
