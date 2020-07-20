@@ -15,6 +15,7 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,11 +52,25 @@ export default function Service() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const [openBtn, setOpenBtn] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpenBtn(true);
+  };
+  const handleClose = () => {
+    setOpenBtn(false);
+  };
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="title">
         <ListItem>
         <ListItemText primary="My Service >" />
+        <ListItemSecondaryAction>
+        <Button variant="outlined" edge="end" color="primary" onClick={handleClickOpen}>
+        New Service
+      </Button>
+          </ListItemSecondaryAction>
+       
         </ListItem>
         <Divider />
         <ListItem button>
