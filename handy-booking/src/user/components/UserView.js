@@ -15,6 +15,7 @@ import UserOrder from "./UserOrder";
 import UserManageBar from "./UserManageBar";
 import "../css/userBar.scss";
 import UserProfileCard from "./UserProfileCard";
+import UserProfileCard2 from "./UserProfileCard2";
 import ChangePassword from "./ChangePassword";
 import ChangeProfile from "./ChangeProfile";
 import Trader from "./TraderList";
@@ -46,14 +47,19 @@ class UserView extends Component {
               </Row>
             </Col>
             <Col>
-              <Row>
+              <Row >
                 {/* Services: src/components/Services */}
-                <UserTask />
-                <UserOrder />
+                <div className="user__profile2">
+                    <UserProfileCard2 />
+                </div>
+               
+              
                 {/* <Services /> */}
               </Row>
               <Row>
                 {/* Services: src/components/Services */}
+                <UserTask />
+                <UserOrder />
                 <SearchBar />
                 <Trader />
                 {/* <Services /> */}

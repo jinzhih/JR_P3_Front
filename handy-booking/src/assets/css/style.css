@@ -1924,7 +1924,7 @@ Right Side Modal CSS
 .modal.right .modal-dialog {
   position: fixed;
   margin: auto;
-  width: 520px;
+  width: 320px;
   height: 100%;
   -webkit-transform: translate3d(0%, 0, 0);
           transform: translate3d(0%, 0, 0);

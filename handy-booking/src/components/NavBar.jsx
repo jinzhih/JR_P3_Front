@@ -4,6 +4,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 import SideNav from  "../components/SideNav";
 
+
 class NavBar extends Component {
     componentDidMount() {
         let elem = document.getElementById("navbar");
@@ -191,6 +192,7 @@ class NavBar extends Component {
                             <Nav.Item>
                                 {/* SideNav: src/components/SideNav */}
                                 <SideNav />
+                                 
                             </Nav.Item>
                         </Nav> 
                     </Navbar.Collapse>
