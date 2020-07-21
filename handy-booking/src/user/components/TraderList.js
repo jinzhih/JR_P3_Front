@@ -15,16 +15,25 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import "../css/trader.scss";
 
 const useStyles = makeStyles((theme) => ({
+  root1: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
   root: {
     
     marginTop: 20,
     boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0)',
     width: 500,
-    marginLeft: 53
+   // marginLeft: 53
     
     
   },
@@ -84,7 +93,7 @@ export default function TraderList() {
       <CardContent >
         <div className="trader__items">
 <Grid  container spacing={1}>
-        <Grid item xs container direction="column" spacing={2}>
+        <Grid item xs container direction="column" spacing={2} >
               <Grid item xs>
                 
                 <Typography variant="body1" >
@@ -152,13 +161,30 @@ export default function TraderList() {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>About me:</Typography>
-          <Typography paragraph>
-            About me: 
-          </Typography>
-          
-        </CardContent>
+      <div className={classes.root1}>
+      <Grid container spacing={3}>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>xs=6</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
+        </Grid>
+      </Grid>
+    </div>
       </Collapse>
     </Card>
   );

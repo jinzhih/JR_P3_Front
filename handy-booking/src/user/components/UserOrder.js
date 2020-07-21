@@ -17,13 +17,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
+  
   root: {
     width: '100%',
     maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
-    marginLeft: 50,
+    //marginLeft: 50,
     marginTop: 20,
   },
   expand: {

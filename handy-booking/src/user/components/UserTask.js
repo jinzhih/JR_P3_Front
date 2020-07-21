@@ -32,6 +32,7 @@ import Description from './Description';
 import Price from './Price';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
+import "../css/userService.scss";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -80,8 +81,10 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
-    marginLeft: 50,
+    //marginLeft: 50,
     marginTop: 20,
+    
+
   },
   closeButton: {
     position: 'absolute',
@@ -140,7 +143,7 @@ export default function Service() {
     setOpenBtnBook(false);
   };
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
       <List component="nav" aria-label="title">
         <ListItem>
         <ListItemText primary="My Service >" />

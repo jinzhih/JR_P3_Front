@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
-    marginLeft: 50,
+    //marginLeft: 50,
     marginTop: 20,
   },
   expand: {
