@@ -21,7 +21,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
-
+import 'date-fns';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
@@ -30,7 +30,13 @@ import RoomNumber from './RoomNumber';
 import HouseType from './HouseType';
 import Description from './Description';
 import Price from './Price';
-
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -121,6 +127,18 @@ export default function Service() {
   const handleClose = () => {
     setOpenBtn(false);
   };
+
+  const [openBtnBook, setOpenBtnBook] = React.useState(false);
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  const handleClickOpenBook = () => {
+    setOpenBtnBook(true);
+  };
+  const handleCloseBook = () => {
+    setOpenBtnBook(false);
+  };
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="title">
@@ -140,7 +158,7 @@ export default function Service() {
           </ListItemIcon>
           <ListItemText primary="Normal" />
           <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="add">
+                    <IconButton edge="end" aria-label="add" onClick={handleClickOpenBook}>
                       <PostAddIcon />
                     </IconButton>
           </ListItemSecondaryAction>
@@ -239,6 +257,51 @@ export default function Service() {
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
             Post
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+
+    <div>
+    <Dialog onClose={handleCloseBook} aria-labelledby="customized-dialog-title" open={openBtnBook}>
+        <DialogTitle id="customized-dialog-title" onClose={handleCloseBook}>
+          Post your service
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+            Choose the service type
+          </Typography>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justify="space-around">
+       
+        <KeyboardDatePicker
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date picker dialog"
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+        <KeyboardTimePicker
+          margin="normal"
+          id="time-picker"
+          label="Time picker"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change time',
+          }}
+        />
+      </Grid>
+    </MuiPickersUtilsProvider>
+          
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseBook} color="primary">
+            OK
           </Button>
         </DialogActions>
       </Dialog>
