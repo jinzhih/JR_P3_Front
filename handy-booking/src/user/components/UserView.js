@@ -19,6 +19,7 @@ import ChangePassword from "./ChangePassword";
 import ChangeProfile from "./ChangeProfile";
 import Trader from "./TraderList";
 import SearchBar from "./SearchBar";
+import "../css/userView.scss";
 
 class UserView extends Component {
   render() {
@@ -28,17 +29,17 @@ class UserView extends Component {
         <Container>
           <div className="user-banner"> </div>
           <Row>
-            <Col>
-              <Row>
+            <Col className="user__profile">
+              <Row className="user__profile">
                 <UserProfileCard />
                 <UserManageBar />
               </Row>
-              <Row>
+              <Row className="user__profile">
                 {/* About: src/components/About */}
                 {/* <About /> */}
                 <ChangeProfile />
               </Row>
-              <Row>
+              <Row className="user__profile">
                 {/* About: src/components/About */}
                 {/* <About /> */}
                 <ChangePassword />
