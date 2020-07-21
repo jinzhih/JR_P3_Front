@@ -19,10 +19,11 @@ import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    
+    width: '115%',
+    maxWidth: 500,
     marginTop: 20,
     boxShadow: '0 3px 5px 2px rgba(0, 0, 0, 0)',
-    width: 500,
+   // width: 500,
    // marginLeft: 60
     
   },
