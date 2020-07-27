@@ -1,148 +1,92 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Button, Form, Header, Input, Message, Segment } from 'semantic-ui-react';
 
-import { Row, Col, CardBody, Card, Alert,Container } from "reactstrap";
+import FlexContainer from '../../UI/flexContainer/FlexContainer';
+import { TRADIE_BASE_URL } from '../../routes/URLMap';
+import { loginUser as loginUserFn } from '../../api/auth';
+import { setToken } from '../../utils/auth';
 
-// Redux
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import './styles/login.scss';
 
-// availity-reactstrap-validation
-import { AvForm, AvField } from 'availity-reactstrap-validation';
-
-// actions
-import { loginUser,apiError } from '../../store/actions';
-
-// import images
-import profile from "../../assets/images/profile-img.png";
-import logo from "../../assets/images/logo.svg";
-import { signInUser } from '../../api/auth';
-
-class Login extends Component {
-
+class Login extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            username:"",
-            password:"",
+            username: '',
             error: null,
-        }
-
-        // handleValidSubmit
-        this.handleValidSubmit = this.handleValidSubmit.bind(this);
+            isLoading: false,
+            password: '',
+        };
     }
 
-    // handleValidSubmit
-    handleValidSubmit(event, values) {
-      //  this.props.loginUser(values, this.props.history);
-        const username = this.state.username;
-        const password = this.state.password;
-        console.log("ooo"); 
-        signInUser(username, password);
-    }
-
-    handleInputChange =event => {
-        const value = event.target.value;
+    handleChange = event => {
         const name = event.target.name;
-        this.setState({ [name]: value});
+        const value = event.target.value;
+        this.setState({ [name]: value } );
     }
 
-    componentDidMount()
-    {
-        this.props.apiError("");
-        console.log(process.env.REACT_APP_DEFAULTAUTH);
-    }
-
-    signIn = () =>{
+    login = () =>{
         const username = this.state.username;
         const password = this.state.password;
-        console.log("ooo"); 
-        signInUser(username, password);
+        console.log(username);
+        loginUserFn(username, password);
     }
 
     render() {
-
         return (
-            <React.Fragment>
-                <div className="home-btn d-none d-sm-block">
-                    <Link to="/" className="text-dark"><i className="fas fa-home h2"></i></Link>
-                </div>
-                <div className="account-pages my-5 pt-sm-5">
-                    <Container>
-                        <Row className="justify-content-center">
-                            <Col md={8} lg={6} xl={5}>
-                                <Card className="overflow-hidden">
-                                    <div className="bg-soft-primary">
-                                        <Row>
-                                            <Col className="col-7">
-                                                <div className="text-primary p-4">
-                                                    <h5 className="text-primary">Welcome Back !</h5>
-                                                    <p>Sign in to continue to Handy Booking.</p>
-                                                </div>
-                                            </Col>
-                                            <Col className="col-5 align-self-end">
-                                                <img src={profile} alt="" className="img-fluid" />
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <CardBody className="pt-0">
-                                        <div>
-                                            <Link to="/">
-                                                <div className="avatar-md profile-user-wid mb-4">
-                                                    <span className="avatar-title rounded-circle bg-light">
-                                                        <img src={logo} alt="" className="rounded-circle" height="34" />
-                                                    </span>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                        <div className="p-2">
-
-                                            <AvForm className="form-horizontal" onValidSubmit={this.handleValidSubmit}>
-
-                                               
-
-                                                <div className="form-group">
-                                                    <AvField onChange={this.handleInputChange} name="username" label="Email" value={this.state.username} className="form-control" placeholder="Enter email"  required />
-                                                </div>
-
-                                                <div className="form-group">
-                                                    <AvField onChange={this.handleInputChange} name="password" label="Password" value={this.state.password} type="password" required placeholder="Enter Password" />
-                                                </div>
-
-                                                <div className="custom-control custom-checkbox">
-                                                    <input type="checkbox" className="custom-control-input" id="customControlInline" />
-                                                    <label className="custom-control-label" htmlFor="customControlInline">Remember me</label>
-                                                </div>
-
-                                                <div className="mt-3">
-                                                    <button className="btn btn-primary btn-block waves-effect waves-light" type="submit" >Log In</button>
-                                                </div>
-
-                                                <div className="mt-4 text-center">
-                                                    <Link to="/forgot-password" className="text-muted"><i className="mdi mdi-lock mr-1"></i> Forgot your password?</Link>
-                                                </div>
-                                            </AvForm>
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                                <div className="mt-5 text-center">
-                                    <p>Don't have an account ? <Link to="register" className="font-weight-medium text-primary"> Signup now </Link> </p>
-                                    <p>© {new Date().getFullYear()} Skote. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand</p>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-            </React.Fragment>
+            <FlexContainer justifyContentValue="center">
+                <Form
+                    className="login-form" size="large"
+                    error={!!this.state.error}
+                    loading={this.state.isLoading}
+                >
+                    <Header size="large" textAlign="center">
+                        Learning Management System
+                    </Header>
+                    <Segment stacked>
+                        <Form.Field>
+                            <Input
+                                
+                                name="username"
+                                onChange={this.handleChange}
+                                placeholder='username'
+                                value={this.state.username}
+                            />
+                        </Form.Field>
+                        <Form.Field>
+                            <Input
+                                
+                                name="password"
+                                onChange={this.handleChange}
+                                placeholder='Password'
+                                type="password"
+                                value={this.state.password}
+                            />
+                        </Form.Field>
+                       {!!this.state.error && (
+                            <Message
+                                error
+                                header="Login failed"
+                                content="Please check your username and password"
+                            />
+                       )}
+                        <Button
+                            size="large"
+                            fluid
+                            primary
+                            onClick={this.login}
+                        >
+                            Login
+                        </Button>
+                    </Segment>
+                </Form>
+            </FlexContainer>
         );
     }
-}
+};
 
-const mapStatetoProps = state => {
-    const { error } = state.Login;
-    return { error };
-}
-
-export default withRouter(connect(mapStatetoProps, { loginUser,apiError })(Login));
+export default Login;
 
 
 
