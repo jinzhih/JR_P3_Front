@@ -15,12 +15,17 @@ import { loginUser,apiError } from '../../store/actions';
 // import images
 import profile from "../../assets/images/profile-img.png";
 import logo from "../../assets/images/logo.svg";
+import { signInUser } from '../../api/auth';
 
 class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            username:"",
+            password:"",
+            error: null,
+        }
 
         // handleValidSubmit
         this.handleValidSubmit = this.handleValidSubmit.bind(this);
@@ -28,13 +33,30 @@ class Login extends Component {
 
     // handleValidSubmit
     handleValidSubmit(event, values) {
-        this.props.loginUser(values, this.props.history);
+      //  this.props.loginUser(values, this.props.history);
+        const username = this.state.username;
+        const password = this.state.password;
+        console.log("ooo"); 
+        signInUser(username, password);
+    }
+
+    handleInputChange =event => {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({ [name]: value});
     }
 
     componentDidMount()
     {
         this.props.apiError("");
         console.log(process.env.REACT_APP_DEFAULTAUTH);
+    }
+
+    signIn = () =>{
+        const username = this.state.username;
+        const password = this.state.password;
+        console.log("ooo"); 
+        signInUser(username, password);
     }
 
     render() {
@@ -54,7 +76,7 @@ class Login extends Component {
                                             <Col className="col-7">
                                                 <div className="text-primary p-4">
                                                     <h5 className="text-primary">Welcome Back !</h5>
-                                                    <p>Sign in to continue to Skote.</p>
+                                                    <p>Sign in to continue to Handy Booking.</p>
                                                 </div>
                                             </Col>
                                             <Col className="col-5 align-self-end">
@@ -76,14 +98,14 @@ class Login extends Component {
 
                                             <AvForm className="form-horizontal" onValidSubmit={this.handleValidSubmit}>
 
-                                                {this.props.error && this.props.error ? <Alert color="danger">{this.props.error}</Alert> : null}
+                                               
 
                                                 <div className="form-group">
-                                                    <AvField name="email" label="Email" value="admin@themesbrand.com" className="form-control" placeholder="Enter email" type="email" required />
+                                                    <AvField onChange={this.handleInputChange} name="username" label="Email" value={this.state.username} className="form-control" placeholder="Enter email"  required />
                                                 </div>
 
                                                 <div className="form-group">
-                                                    <AvField name="password" label="Password" value="123456" type="password" required placeholder="Enter Password" />
+                                                    <AvField onChange={this.handleInputChange} name="password" label="Password" value={this.state.password} type="password" required placeholder="Enter Password" />
                                                 </div>
 
                                                 <div className="custom-control custom-checkbox">
@@ -92,7 +114,7 @@ class Login extends Component {
                                                 </div>
 
                                                 <div className="mt-3">
-                                                    <button className="btn btn-primary btn-block waves-effect waves-light" type="submit">Log In</button>
+                                                    <button className="btn btn-primary btn-block waves-effect waves-light" type="submit" >Log In</button>
                                                 </div>
 
                                                 <div className="mt-4 text-center">
@@ -121,4 +143,6 @@ const mapStatetoProps = state => {
 }
 
 export default withRouter(connect(mapStatetoProps, { loginUser,apiError })(Login));
+
+
 

@@ -3,6 +3,13 @@ import { post, put, get } from "./axios";
 const API_LOGIN_URL = "/auth";
 const API_SIGNUP_URL = "/users";
 
+export const signInUser = (username, password) => {
+	post("/auth", {
+		username,
+		password
+	})
+};
+
 export const login = data => {
 	return post(API_LOGIN_URL, data).then(res => {
 		return res.data.data;

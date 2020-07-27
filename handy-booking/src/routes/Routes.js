@@ -14,6 +14,7 @@ import UserSignupView from '../signup/components/UserSignupView';
 import TradieSignupView from '../signup/components/TradieSignupView';
 import NewOrder from '../order/components/NewOrder';
 import NewBook from '../order/components/NewBook';
+import Login from "../pages/Authentication/Login";
 
 
 const Routes = () => {
@@ -22,6 +23,7 @@ const Routes = () => {
             <Redirect exact from="/" to="/home" />
             <Route exact path="/users" component={UserView} />
             <Route exact path="/tradies" component={TradieView} />
+            <Route exact path="/login" component={Login} />
            
             <Route exact path="/home" component={HomeThree} />
             <Route exact path="/signup/user" component={UserSignupView} />
