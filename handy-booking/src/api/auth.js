@@ -1,11 +1,13 @@
 import { post } from './axios';
 
-
 const API_LOGIN_URL = '/auth';
 
-export const loginUser = (username, password) => {
+export const loginUser = (account, password) => {
     return post(API_LOGIN_URL, {
-        username,
+        account,
         password,
-    }).then(res => res.data.data.token);
+    }).then(res => {
+        console.log(res)});
+       
 };
+

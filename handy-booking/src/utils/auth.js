@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const JWT_TOKEN_NAME = "jr-cleaner";
 const CLIENT_ID = "clientId";
-const BUSINESS_ID = "businessId";
+const BUSINESS_ID = "tradieId";
 
 export const getToken = () => localStorage.getItem(JWT_TOKEN_NAME);
 export const getClientId = () => localStorage.getItem(CLIENT_ID);

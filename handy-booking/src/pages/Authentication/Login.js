@@ -13,7 +13,7 @@ class Login extends React.Component {
         super(props);
 
         this.state = {
-            username: '',
+            account: '',
             error: null,
             isLoading: false,
             password: '',
@@ -28,7 +28,7 @@ class Login extends React.Component {
 
     login = () => {
         this.setState({ error: null, isLoading: true }, () => {
-            loginUserFn(this.state.username, this.state.password)
+            loginUserFn(this.state.account, this.state.password)
                 .then(jwtToken => {
                     this.setState({ isLoading: false }, () => {
                         setToken(jwtToken);
@@ -57,10 +57,10 @@ class Login extends React.Component {
                         <Form.Field>
                             <Input
                                 
-                                name="username"
+                                name="account"
                                 onChange={this.handleChange}
-                                placeholder='username'
-                                value={this.state.username}
+                                placeholder='account'
+                                value={this.state.account}
                             />
                         </Form.Field>
                         <Form.Field>
@@ -77,7 +77,7 @@ class Login extends React.Component {
                             <Message
                                 error
                                 header="Login failed"
-                                content="Please check your username and password"
+                                content="Please check your account and password"
                             />
                        )}
                         <Button

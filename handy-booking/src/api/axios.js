@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "../utils/auth";
 
-axios.defaults.baseURL = "http://127.0.0.1:3001/api";
+axios.defaults.baseURL = "http://localhost:3001/api";
 
 const appendAuthToken = config => {
     const jwtToken = getToken();
@@ -13,8 +13,16 @@ const appendAuthToken = config => {
 export const get = (url, config = {}) =>
     axios.get(url, appendAuthToken(config));
 
-export const post = (url, data, config = {}) =>
-    axios.post(url, data, appendAuthToken(config));
+export const post = (url, data, config = {}) => {
+
+	console.log(url);
+	console.log(data);
+	return axios.post(url, data, appendAuthToken(config));
+
+};
+	
+
+
 
 export const put = (url, data, config = {}) =>
     axios.put(url, data, appendAuthToken(config));
