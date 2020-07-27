@@ -20,10 +20,20 @@ import '../../user/css/userBar.scss';
 import UserProfileCard from "../../user/components/UserProfileCard";
 
 class OrderView extends Component {
+  constructor(props) {
+		super(props);
+
+		this.state = {
+			
+		};
+	}
+	
+		
+	
    
   render() {
  
-
+    
 
     return (
       <React.Fragment>
@@ -35,8 +45,9 @@ class OrderView extends Component {
            
             <Col>
                   <Row className = "order-view">
-                    {/* Services: src/components/Services */}
-                    <OrderDetailView />  
+                  
+    
+                    <OrderDetailView content = {this.props}/>  
                   </Row>
                   
               

@@ -20,15 +20,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-  export default function OrderDetailView() {
+  export default function OrderDetailView(props) {
     const classes = useStyles();
+    console.log(props.content);
   
     return (
       <div className={classes.root}>
         <Grid container spacing={3}>
          
           <Grid item xs={12} sm={8}>
-            <h2 >House Cleaning</h2>  
+    <h2 >House Cleaning</h2>  
             <OrderGeneral />  
           </Grid>
           <Grid item xs={12} sm={4}>

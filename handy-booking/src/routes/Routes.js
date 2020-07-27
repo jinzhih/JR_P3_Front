@@ -22,12 +22,13 @@ const Routes = () => {
             <Redirect exact from="/" to="/home" />
             <Route exact path="/users" component={UserView} />
             <Route exact path="/tradies" component={TradieView} />
-            <Route exact path="/orders" component={OrderView} /> 
+           
             <Route exact path="/home" component={HomeThree} />
             <Route exact path="/signup/user" component={UserSignupView} />
             <Route exact path="/signup/tradie" component={TradieSignupView} />
             <Route exact path="/neworders" component={NewOrder} />
             <Route exact path="/newbooks" component={NewBook} />
+            <Route exact path="/orders/:orderId" component={OrderView} />
            
 
         </Switch>
