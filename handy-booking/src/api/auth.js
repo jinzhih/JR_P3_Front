@@ -7,5 +7,5 @@ export const loginUser = (username, password) => {
     return post(API_LOGIN_URL, {
         username,
         password,
-    })
+    }).then(res => res.data.data.token);
 };

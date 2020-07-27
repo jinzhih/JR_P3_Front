@@ -26,12 +26,21 @@ class Login extends React.Component {
         this.setState({ [name]: value } );
     }
 
-    login = () =>{
-        const username = this.state.username;
-        const password = this.state.password;
-        console.log(username);
-        loginUserFn(username, password);
+    login = () => {
+        this.setState({ error: null, isLoading: true }, () => {
+            loginUserFn(this.state.username, this.state.password)
+                .then(jwtToken => {
+                    this.setState({ isLoading: false }, () => {
+                        setToken(jwtToken);
+                        const locationState = this.props.location.state;
+                        const redirectTo = (locationState && locationState.from) || TRADIE_BASE_URL;
+                        this.props.history.replace(redirectTo);
+                    });
+                })
+                .catch(error => this.setState({ error, isLoading: false }));
+        });
     }
+
 
     render() {
         return (
