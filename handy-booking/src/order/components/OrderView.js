@@ -32,17 +32,7 @@ class OrderView extends Component {
         <Container >
         <div className="user-banner" > </div>
           <Row>
-            <Col>
-                <Row>
-                    <UserProfileCard />
-                   
-                </Row>
-                <Row>
-                    {/* About: src/components/About */}
-                    <About />
-                </Row>
-              
-            </Col>
+           
             <Col>
                   <Row className = "order-view">
                     {/* Services: src/components/Services */}
