@@ -5,8 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavBar from "../../components/NavBar";
-import About from "../../components/About";
-import Services from "../../components/Services";
+
 
 import Footer from "../../components/Footer";
 import ScrollUpBtn from "../../components/ScrollUpBtn";
