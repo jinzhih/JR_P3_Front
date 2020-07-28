@@ -146,38 +146,31 @@ export default function Service() {
     <div className={classes.root} >
       <List component="nav" aria-label="title">
         <ListItem>
-        <ListItemText primary="My Service >" />
+        <ListItemText primary="Service List >" />
+      
         <ListItemSecondaryAction>
-        <Button variant="outlined" edge="end" color="primary" onClick={handleClickOpen}>
-        New Service
-      </Button>
+      
           </ListItemSecondaryAction>
        
         </ListItem>
+
         <Divider />
-        <ListItem button>
+        <ListItem button onClick={handleClickOpenBook}>
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
           <ListItemText primary="Normal" />
-          <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="add" onClick={handleClickOpenBook}>
-                      <PostAddIcon />
-                    </IconButton>
-          </ListItemSecondaryAction>
+         
         </ListItem>
-      
+       
       <Divider />
-      <ListItem button>
+      <ListItem button onClick={handleClickOpenBook}>
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
           <ListItemText primary="End-Lease" />
           <ListItemSecondaryAction>
-                    <IconButton 
-          edge="end" aria-label="add">
-                      <PostAddIcon />
-                    </IconButton>
+                   
           </ListItemSecondaryAction>
         </ListItem>
         <ListItem>
@@ -201,7 +194,7 @@ export default function Service() {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <List>
              <Divider />
-        <ListItem button>
+        <ListItem button onClick={handleClickOpenBook}>
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
@@ -220,60 +213,33 @@ export default function Service() {
           </ListItemIcon>
           <ListItemText primary="End-Lease" />
           <ListItemSecondaryAction>
-                    <IconButton 
-          edge="end" aria-label="add">
-                      <PostAddIcon />
-                    </IconButton>
+                   
           </ListItemSecondaryAction>
         </ListItem>
           </List>
        
       </Collapse>
-      <div>
-     
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openBtn}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Post your service
-        </DialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-            Choose the service type
-          </Typography>
-          <ServiceType/>
-          <Typography gutterBottom>
-            Choose room numbers
-          </Typography>
-          <RoomNumber/>
-          <Typography gutterBottom>
-            choose housing types
-          </Typography>
-          <HouseType/>
-          <Typography gutterBottom>
-            Input some descriptions
-          </Typography>
-          <Description/>
-          <Typography gutterBottom>
-            Input price
-          </Typography>
-          <Price/>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Post
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    
 
     <div>
     <Dialog onClose={handleCloseBook} aria-labelledby="customized-dialog-title" open={openBtnBook}>
         <DialogTitle id="customized-dialog-title" onClose={handleCloseBook}>
-          Post your service
+          Book your service
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Choose the service type
+            Service type: Move Out Clean
           </Typography>
+          <Typography gutterBottom>
+            Service Room Numbers: 3
+          </Typography>
+          <Typography gutterBottom>
+            Housing Type: apartment
+          </Typography>
+          <Typography gutterBottom>
+            Price: $100
+          </Typography>
+
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
        
@@ -304,7 +270,7 @@ export default function Service() {
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleCloseBook} color="primary">
-            OK
+            BOOK
           </Button>
         </DialogActions>
       </Dialog>

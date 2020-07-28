@@ -75,7 +75,7 @@ class NavBar extends Component {
                                     Home
                                 </Link>
                             </Nav.Item>
-                            {/* <p><Link to ="/signup/user">UserSignUp</Link></p>
+                            {/* <p><Link to ="/login">UserSignUp</Link></p>
             <p><Link to ="/tradies">TradiePage</Link></p>
             <p><Link to ="/users">UserPage</Link></p>
             <p><Link to ="/tradies">TradieSignUp</Link></p>
@@ -110,84 +110,41 @@ class NavBar extends Component {
                                 </Link>
                             </Nav.Item>
 
-                            <Nav.Item>
-                                <Link
-                                    activeClass="active"
-                                    to="/tradies"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-70}
-                                    duration={800}
-                                    className="nav-link"
-                                    onClick={event =>  window.location.href='/tradies'}
-                                    href="/users"
-                                >
-                                    TradiePage
-                                </Link>
-                            </Nav.Item>
+                        
 
                             <Nav.Item>
                                 <Link
                                     activeClass="active"
-                                    to="/users"
+                                    to="/signup/"
                                     spy={true}
                                     smooth={true}
                                     offset={-70}
                                     duration={800}
                                     className="nav-link"
-                                    onClick={event =>  window.location.href='/users'}
-                                   
-                                >
-                                    UserPage
-                                </Link>
-                            </Nav.Item>
-
-                            <Nav.Item>
-                                <Link
-                                    activeClass="active"
-                                    to="/signup/tradie"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-70}
-                                    duration={800}
-                                    className="nav-link"
-                                    onClick={event =>  window.location.href='/signup/tradie'}
+                                    onClick={event =>  window.location.href='/signup/'}
                                  
                                 >
-                                    TradieSignUp
+                                    SignUp
                                 </Link>
                             </Nav.Item>
 
                             <Nav.Item>
                                 <Link
                                     activeClass="active"
-                                    to="/signup/user"
+                                    to="/login"
                                     spy={true}
                                     smooth={true}
                                     offset={-70}
                                     duration={800}
                                     className="nav-link"
-                                    onClick={event =>  window.location.href='/signup/user'}
+                                    onClick={event =>  window.location.href='/login'}
                                   
                                 >
-                                    UserSignup
+                                    Login
                                 </Link>
                             </Nav.Item>
 
-                            <Nav.Item>
-                                <Link
-                                    activeClass="active"
-                                    to="contact"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-70}
-                                    duration={800}
-                                    className="nav-link"
-                                    onClick={this.closeNavbar}
-                                >
-                                    Contact
-                                </Link>
-                            </Nav.Item>
+                           
                                 
                             <Nav.Item>
                                 {/* SideNav: src/components/SideNav */}

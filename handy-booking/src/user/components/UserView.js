@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavBar from "../../components/NavBar";
-import {fetchAllTradies} from '../../api/tradie';
+import {fetchAllServices} from '../../api/service';
 
 import Footer from "../../components/Footer";
 import ScrollUpBtn from "../../components/ScrollUpBtn";
@@ -26,7 +26,7 @@ class UserView extends Component {
     super(props);
 
     this.state = {
-        tradies: [],
+        services: [],
         error: null,
         isLoading: false,
         pagination: {},
@@ -34,8 +34,8 @@ class UserView extends Component {
 } 
  
 componentDidMount() {
-  fetchAllTradies().then(tradies => {
-    this.setState({ tradies })
+  fetchAllServices().then(services => {
+    this.setState({ services })
   });
 }
 
@@ -52,14 +52,10 @@ componentDidMount() {
                 <UserManageBar />
               </Row>
               <Row className="user__profile">
-                {/* About: src/components/About */}
-                {/* <About /> */}
-                <ChangeProfile />
+              
               </Row>
               <Row className="user__profile">
-                {/* About: src/components/About */}
-                {/* <About /> */}
-                <ChangePassword />
+             
               </Row>
             </Col>
             <Col>
@@ -74,10 +70,11 @@ componentDidMount() {
               </Row>
               <Row>
                 {/* Services: src/components/Services */}
+                <SearchBar />
                 <UserTask />
                 <UserOrder />
-                <SearchBar />
-                <Trader />
+              
+                
                 {/* <Services /> */}
               </Row>
               

@@ -67,7 +67,7 @@ export default function TraderList() {
   return (
     <Card className={classes.root}>
       <CardHeader className="trader__header"
-       title="Trader List"
+       title="Service List"
        
       />
      

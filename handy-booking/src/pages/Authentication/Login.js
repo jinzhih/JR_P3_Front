@@ -2,9 +2,16 @@ import React from 'react';
 import { Button, Form, Header, Input, Message, Segment } from 'semantic-ui-react';
 
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
-import { TRADIE_BASE_URL } from '../../routes/URLMap';
+import { TRADIE_BASE_URL, CLIENT_BASE_URL, SIGNUP_URL} from '../../routes/URLMap';
 import { loginUser as loginUserFn } from '../../api/auth';
-import { setToken } from '../../utils/auth';
+import { setToken, 
+         getTokenRole,
+	     setClientId,
+	     setTradieId,
+	     removeClientId,
+	     removeBusinessId
+} from '../../utils/auth';
+import { CLIENT_ROLE, TRADIE_ROLE, POST_ORDER_AT_HOMEPAGE } from "../../utils/variables";
 
 import './styles/login.scss';
 
@@ -26,21 +33,95 @@ class Login extends React.Component {
         this.setState({ [name]: value } );
     }
 
-    login = () => {
+    loginInitialSetup = data => {
+		setToken(data.token);
+		removeClientId();
+		removeBusinessId();
+    };
+
+    clientLogin = data => {
+        console.log(data);
+		setClientId(data.clientId);
+		const locationState = this.props.location.state;
+		//const redirectTo =  `${CLIENT_BASE_URL}/${data.clientId}`;
+		const redirectTo = "/clients/A134"	 
+		this.props.history.replace(redirectTo);
+    };
+    
+    TradieLogin = data => {
+		setTradieId(data.tradieId);
+		const locationState = this.props.location.state;
+		const redirectTo =  `${TRADIE_BASE_URL}/${data.tradieId}`;
+			 
+		this.props.history.replace(redirectTo);
+	};
+
+    login1 = data => {
         this.setState({ error: null, isLoading: true }, () => {
             loginUserFn(this.state.account, this.state.password)
-                .then(jwtToken => {
+                .then(data => {
                     this.setState({ isLoading: false }, () => {
-                        setToken(jwtToken);
-                        
+
+                        setToken(data.token);
+                        setClientId(data.clientId);
                         const locationState = this.props.location.state;
-                        const redirectTo = (locationState && locationState.from) || TRADIE_BASE_URL;
+                        const redirectTo =  `${CLIENT_BASE_URL}/${data.clientId}` || (locationState && locationState.from);
                         this.props.history.replace(redirectTo);
                     });
                 })
                 .catch(error => this.setState({ error, isLoading: false }));
         });
     }
+
+    login2 = data => {
+        this.setState({ error: null, isLoading: true }, () => {
+            loginUserFn(this.state.account, this.state.password)
+                .then(data => {
+                    this.setState({ isLoading: false }, () => {
+                        if (data.role === CLIENT_ROLE) {
+							
+                            setToken(data.token);
+                            setClientId(data.clientId);
+                            const locationState = this.props.location.state;
+                            const redirectTo =  `${CLIENT_BASE_URL}/${data.clientId}` || (locationState && locationState.from);
+                            this.props.history.replace(redirectTo);
+						} else {
+                            setToken(data.token);
+                            setClientId(data.tradieId);
+                            const locationState = this.props.location.state;
+                            const redirectTo =  `${TRADIE_BASE_URL}/${data.tradieId}` || (locationState && locationState.from);
+                            this.props.history.replace(redirectTo);
+                        }
+                       
+                    });
+                })
+                .catch(error => this.setState({ error, isLoading: false }));
+        });
+    }
+    login = () => {
+		const loginInfo = {
+			account: this.state.account,
+			password: this.state.password
+		};
+
+		this.setState({ error: null, isLoading: true }, () => {
+			loginUserFn(loginInfo)
+				.then(data => {
+					this.setState({ isLoading: false }, () => {
+						this.loginInitialSetup(data);
+						if (getTokenRole() === CLIENT_ROLE) {
+							this.clientLogin(data);
+						} else if (getTokenRole() === TRADIE_ROLE) {
+							this.businessLogin(data);
+						} else {
+							this.props.history.replace(SIGNUP_URL);
+						}
+					});
+				})
+				.catch(error => this.setState({ error, isLoading: false }));
+		});
+	};
+
 
 
     render() {
@@ -87,7 +168,7 @@ class Login extends React.Component {
                             size="large"
                             fluid
                             primary
-                            onClick={this.login}
+                            onClick={this.login2}
                         >
                             Login
                         </Button>

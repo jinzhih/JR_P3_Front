@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "../utils/auth";
 
-axios.defaults.baseURL = "http://localhost:3001/api";
+axios.defaults.baseURL = "http://localhost:3000/api";
 
 const appendAuthToken = config => {
     const jwtToken = getToken();
