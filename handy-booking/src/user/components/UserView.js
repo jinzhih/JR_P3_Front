@@ -5,8 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavBar from "../../components/NavBar";
-import About from "../../components/About";
-import Services from "../../components/Services";
+import {fetchAllTradies} from '../../api/tradie';
 
 import Footer from "../../components/Footer";
 import ScrollUpBtn from "../../components/ScrollUpBtn";
@@ -23,6 +22,23 @@ import SearchBar from "./SearchBar";
 import "../css/userView.scss";
 
 class UserView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        tradies: [],
+        error: null,
+        isLoading: false,
+        pagination: {},
+    };
+} 
+ 
+componentDidMount() {
+  fetchAllTradies().then(tradies => {
+    this.setState({ tradies })
+  });
+}
+
   render() {
     return (
       <React.Fragment>

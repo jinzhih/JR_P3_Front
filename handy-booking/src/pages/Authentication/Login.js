@@ -52,7 +52,7 @@ class Login extends React.Component {
                     loading={this.state.isLoading}
                 >
                     <Header size="large" textAlign="center">
-                        Learning Management System
+                        Handy Booking
                     </Header>
                     <Segment stacked>
                         <Form.Field>
