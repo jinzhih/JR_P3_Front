@@ -2,23 +2,23 @@ import jwt from "jsonwebtoken";
 
 const JWT_TOKEN_NAME = "jr-handy";
 const CLIENT_ID = "clientId";
-const BUSINESS_ID = "tradieId";
+const TRADIE_ID = "tradieId";
 
 export const getToken = () => localStorage.getItem(JWT_TOKEN_NAME);
 export const getClientId = () => localStorage.getItem(CLIENT_ID);
-export const getBusinessId = () => localStorage.getItem(BUSINESS_ID);
+export const getBusinessId = () => localStorage.getItem(TRADIE_ID);
 
 export const setToken = token => localStorage.setItem(JWT_TOKEN_NAME, token);
 
 export const setClientId = clientId =>
 	localStorage.setItem(CLIENT_ID, clientId);
 
-export const setBusinessId = businessId =>
-	localStorage.setItem(BUSINESS_ID, businessId);
+export const setTradieId = tradieId =>
+	localStorage.setItem(TRADIE_ID, tradieId);
 
 export const removeToken = () => localStorage.removeItem(JWT_TOKEN_NAME);
 export const removeClientId = () => localStorage.removeItem(CLIENT_ID);
-export const removeBusinessId = () => localStorage.removeItem(BUSINESS_ID);
+export const removeBusinessId = () => localStorage.removeItem(TRADIE_ID);
 
 export const getTokenRole = () => {
 	const token = localStorage.getItem(JWT_TOKEN_NAME);
