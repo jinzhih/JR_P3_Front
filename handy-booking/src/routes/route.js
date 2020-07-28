@@ -13,7 +13,7 @@ const AppRoute = ({
 
 				if (isAuthProtected && !sessionStorage.getItem("authUser")) {
 					return (
-						<Redirect to={{ pathname: "/login", state: { from: props.location } }} />
+						<Redirect to={{ pathname: "/login", state: { from: props.location.pathname } }} />
 					);
 				}
 

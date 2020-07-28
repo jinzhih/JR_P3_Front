@@ -15,8 +15,6 @@ export const get = (url, config = {}) =>
 
 export const post = (url, data, config = {}) => {
 
-	console.log(url);
-	console.log(data);
 	return axios.post(url, data, appendAuthToken(config));
 
 };

@@ -32,6 +32,7 @@ class Login extends React.Component {
                 .then(jwtToken => {
                     this.setState({ isLoading: false }, () => {
                         setToken(jwtToken);
+                        console.log(this.props.location);
                         const locationState = this.props.location.state;
                         const redirectTo = (locationState && locationState.from) || TRADIE_BASE_URL;
                         this.props.history.replace(redirectTo);

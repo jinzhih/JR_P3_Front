@@ -1,95 +1,80 @@
-import React, { Component } from "react";
-import { Switch, BrowserRouter as Router } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { Component} from "react";
+//import {Route, Switch, Redirect} from 'react-router-dom';
 
-// Import Routes
-import { authProtectedRoutes, publicRoutes } from "../../routes/";
-import AppRoute from "../../routes/route";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import NavBar from "../../components/NavBar";
+import About from "../../components/About";
+import Services from "../../components/Services";
 
-// layouts
-import VerticalLayout from "../../components/VerticalLayout/";
+import Footer from "../../components/Footer";
+import ScrollUpBtn from "../../components/ScrollUpBtn";
+import UserTask from "./UserTask";
+import UserOrder from "./UserOrder";
+import UserManageBar from "./UserManageBar";
+import "../css/userBar.scss";
+import UserProfileCard from "./UserProfileCard";
+import UserProfileCard2 from "./UserProfileCard2";
+import ChangePassword from "./ChangePassword";
+import ChangeProfile from "./ChangeProfile";
+import Trader from "./TraderList";
+import SearchBar from "./SearchBar";
+import "../css/userView.scss";
 
-import NonAuthLayout from "../../components/NonAuthLayout";
-
-// Import scss
-import "../../assets/scss/theme.scss";
-
-// Import Firebase Configuration file
-// import { initFirebaseBackend } from "./helpers/firebase_helper";
-
-import fakeBackend from '../../helpers/AuthType/fakeBackend';
-
-// Activating fake backend
-fakeBackend();
-
-// const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_APIKEY,
-//   authDomain: process.env.REACT_APP_AUTHDOMAIN,
-//   databaseURL: process.env.REACT_APP_DATABASEURL,
-//   projectId: process.env.REACT_APP_PROJECTID,
-//   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-//   messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-//   appId: process.env.REACT_APP_APPID,
-//   measurementId: process.env.REACT_APP_MEASUREMENTID,
-// };
-
-// init firebase backend
-// initFirebaseBackend(firebaseConfig);
-
-
-
-class TradieView extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {  };
-		this.getLayout = this.getLayout.bind(this);
-	}
- 
- 	/**
-	 * Returns the layout
-	 */
-	getLayout = () => {
-		let layoutCls = VerticalLayout;
-		return layoutCls;
-	};
-
-	render() {
-		const Layout = this.getLayout();
-
-		return (
-			<React.Fragment>
-				<Router>
-					<Switch>
-						{publicRoutes.map((route, idx) => (
-							<AppRoute
-								path={route.path}
-								layout={NonAuthLayout}
-								component={route.component}
-								key={idx}
-								isAuthProtected={false}
-							/>
-						))}
-
-						{authProtectedRoutes.map((route, idx) => (
-							<AppRoute
-								path={route.path}
-								layout={Layout}
-								component={route.component}
-								key={idx}
-								isAuthProtected={true}
-							/>
-						))}
-					</Switch>
-				</Router>
-			</React.Fragment>
-		);
-	}
+class UserView extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <NavBar />
+        <Container>
+          <div className="user-banner"> </div>
+          <Row>
+            <Col className="user__profile">
+              <Row className="user__profile">
+                <UserProfileCard />
+                <UserManageBar />
+              </Row>
+              <Row className="user__profile">
+                {/* About: src/components/About */}
+                {/* <About /> */}
+                <ChangeProfile />
+              </Row>
+              <Row className="user__profile">
+                {/* About: src/components/About */}
+                {/* <About /> */}
+                <ChangePassword />
+              </Row>
+            </Col>
+            <Col>
+              <Row >
+                {/* Services: src/components/Services */}
+                <div className="user__profile2">
+                    <UserProfileCard2 />
+                </div>
+               
+              
+                {/* <Services /> */}
+              </Row>
+              <Row>
+                {/* Services: src/components/Services */}
+                <UserTask />
+                <UserOrder />
+                <SearchBar />
+                <Trader />
+                {/* <Services /> */}
+              </Row>
+              
+            </Col>
+          </Row>
+        </Container>
+        {/* Footer: src/components/Footer */}
+        <Footer />
+        {/* ScrollUpBtn: src/components/ScrollUpBtn */}
+        <ScrollUpBtn />
+      </React.Fragment>
+    );
+  }
 }
 
-const mapStateToProps = state => {
-	return {
-		layout: state.Layout
-	};
-};
-
-export default connect(mapStateToProps, null)(TradieView);
+export default UserView;

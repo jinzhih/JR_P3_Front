@@ -15,14 +15,15 @@ import TradieSignupView from '../signup/components/TradieSignupView';
 import NewOrder from '../order/components/NewOrder';
 import NewBook from '../order/components/NewBook';
 import Login from "../pages/Authentication/Login";
+import ProtectedRoute from './componets/ProtectedRoute';
 
 
 const Routes = () => {
     return (
         <Switch>
             <Redirect exact from="/" to="/home" />
-            <Route exact path="/users" component={UserView} />
-            <Route exact path="/tradies" component={TradieView} />
+            <ProtectedRoute exact path="/users" component={UserView} />
+            <ProtectedRoute exact path="/tradies" component={TradieView} />
             <Route exact path="/login" component={Login} />
            
             <Route exact path="/home" component={HomeThree} />

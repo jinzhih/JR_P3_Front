@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const JWT_TOKEN_NAME = "jr-cleaner";
+const JWT_TOKEN_NAME = "jr-handy";
 const CLIENT_ID = "clientId";
 const BUSINESS_ID = "tradieId";
 

@@ -6,8 +6,6 @@ export const loginUser = (account, password) => {
     return post(API_LOGIN_URL, {
         account,
         password,
-    }).then(res => {
-        console.log(res)});
-       
+    }).then(res => res.data.token);
 };
 
