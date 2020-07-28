@@ -57,7 +57,8 @@ class Login extends React.Component {
                     <Segment stacked>
                         <Form.Field>
                             <Input
-                                
+                                icon='user'
+                                iconPosition='left'
                                 name="account"
                                 onChange={this.handleChange}
                                 placeholder='account'
@@ -66,7 +67,8 @@ class Login extends React.Component {
                         </Form.Field>
                         <Form.Field>
                             <Input
-                                
+                                icon='lock'
+                                iconPosition='left'
                                 name="password"
                                 onChange={this.handleChange}
                                 placeholder='Password'
