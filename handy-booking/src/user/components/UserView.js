@@ -15,11 +15,13 @@ import UserManageBar from "./UserManageBar";
 import "../css/userBar.scss";
 import UserProfileCard from "./UserProfileCard";
 import UserProfileCard2 from "./UserProfileCard2";
-import ChangePassword from "./ChangePassword";
-import ChangeProfile from "./ChangeProfile";
+import ErrorMessage from "../../UI/Error";
 import Trader from "./TraderList";
 import SearchBar from "./SearchBar";
 import "../css/userView.scss";
+import {
+	SERVICE_URL
+} from "../../routes/URLMap";
 
 class UserView extends Component {
   constructor(props) {
@@ -30,12 +32,27 @@ class UserView extends Component {
         error: null,
         isLoading: false,
         pagination: {},
+        limit: 8,
     };
 } 
+
+
+handleChangeLimit = limit => {
+  this.setState({limit});
+}
  
 componentDidMount() {
-  fetchAllServices().then(services => {
-    this.setState({ services })
+  // fetchAllServices().then(services => {
+  //   console.log(services);
+  //   this.setState({ services })
+  // });
+  this.setState({isLoading: true},() =>{
+    fetchAllServices().then(services => {
+        console.log(services);
+        this.setState({ services, isLoading: false })
+      }).catch(error => {
+        this.setState({isLoading:false,error});
+      });
   });
 }
 
@@ -44,6 +61,7 @@ componentDidMount() {
       <React.Fragment>
         <NavBar />
         <Container>
+          <ErrorMessage error={null} />
           <div className="user-banner"> </div>
           <Row>
             <Col className="user__profile">
@@ -69,9 +87,16 @@ componentDidMount() {
                 {/* <Services /> */}
               </Row>
               <Row>
-                {/* Services: src/components/Services */}
+              <SearchBar />
+              {/* {this.state.services.map(service => (
+                            <UserTask
+                                services={service}
+                             
+                            />
+                        ))} */}
+                <UserTask services = {this.state.services} />       
                 <SearchBar />
-                <UserTask />
+             
                 <UserOrder />
               
                 
