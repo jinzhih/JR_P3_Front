@@ -15,6 +15,9 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import DateFnsUtils from '@date-io/date-fns';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import useReactRouter from 'use-react-router';
+import {createOrder} from '../../api/order';
 
 import Grid from '@material-ui/core/Grid';
 import {
@@ -22,6 +25,7 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
   } from '@material-ui/pickers';
+ 
 const styles = (theme) => ({
     root: {
       margin: 0,
@@ -81,14 +85,33 @@ const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 
 export default function ServiceItem(props) {
+    const { history, location, match } = useReactRouter();
+  
+    let clientId;
+  
+    clientId = localStorage.getItem("clientId");
+    let serviceId;
+    serviceId = props.services._id;
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+ 
   const [openBtnBook, setOpenBtnBook] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const [address, setAddress] = React.useState('18 Mareat Street, TAS');
+const [order, setOrder] = React.useState({
+    requireServiceTime: "test",
+    serviceAddress: address,
+    
+ })
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    console.log(date);
   };
+ 
   const handleClickOpenBook = () => {
     setOpenBtnBook(true);
   };
@@ -99,9 +122,12 @@ export default function ServiceItem(props) {
     setOpen(true);
   };
 
-  const handleClose = (value) => {
-    setOpen(false);
-    setSelectedValue(value);
+
+  const handleBookOrder = () => {
+    createOrder(serviceId,clientId,order)
+        
+        
+
   };
 
 return (
@@ -147,6 +173,7 @@ return (
           label="Date picker dialog"
           format="MM/dd/yyyy"
           value={selectedDate}
+          
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
@@ -162,12 +189,21 @@ return (
             'aria-label': 'change time',
           }}
         />
+        <TextField
+          id="standard-multiline-flexible"
+          label="Address"
+          multiline
+          rowsMax={4}
+          value={address}
+          onChange={handleAddressChange}
+        />
+
       </Grid>
     </MuiPickersUtilsProvider>
           
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleCloseBook} color="primary">
+          <Button autoFocus onClick={handleBookOrder} color="primary">
             BOOK
           </Button>
         </DialogActions>
@@ -178,25 +214,5 @@ return (
   );
 }
 
- function SimpleDialog(props) {
-    const classes = useStyles();
-    const { onClose, selectedValue, open } = props;
-  
-    const handleClose = () => {
-      onClose(selectedValue);
-    };
-  
-    const handleListItemClick = (value) => {
-      onClose(value);
-    };
-  
-    return (
-      <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-        <DialogTitle id="simple-dialog-title">ppp</DialogTitle>
-       
-      </Dialog>
-    );
-  }
-  
-
+ 
   

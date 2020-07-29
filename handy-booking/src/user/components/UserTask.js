@@ -170,18 +170,35 @@ export default function Service(props) {
       <Divider />
      
      
-      {services.map(service => (
+      {/* {services.map(service => (
      
  <ListItem >
 
         <ServiceItem
            services = {service}
-          
+           
         />
  </ListItem>   
  
       
-      ))}
+      ))} */}
+
+
+      {
+        services.map((service) => {
+          return(
+            <ListItem key = {service._id}>
+
+            <ServiceItem
+               services = {service}
+               
+            />
+            </ListItem>   
+          )
+        }
+
+        )
+      }
           
       
       
