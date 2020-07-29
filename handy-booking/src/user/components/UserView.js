@@ -35,6 +35,7 @@ class UserView extends Component {
         pagination: {},
         limit: 8,
         input: "",
+        isSearch: false,
     };
 } 
 
@@ -48,7 +49,8 @@ handleInputChange = event =>{
 };
 
 handleSearch = () =>{
-	fetchServicesByType(this.state.input).then(this.updateService);
+  fetchServicesByType(this.state.input).then(this.updateService);
+  this.setState({isSearch: true});
 }
 updateService = (data) =>{
 	const services = data;
@@ -101,19 +103,22 @@ componentDidMount() {
                 {/* <Services /> */}
               </Row>
               <Row>
-              <SearchBar 
-                 input = {this.state.input}
-                 handleInputChange = {this.handleInputChange}
-		            	handleSearch = {this.handleSearch}
-              />
+              
               {/* {this.state.services.map(service => (
                             <UserTask
                                 services={service}
                              
                             />
                         ))} */}
-                <UserTask services = {this.state.services} />       
-                <SearchBar />
+                <UserTask 
+                services = {this.state.services} 
+                isSearch = {this.state.isSearch}
+                input = {this.state.input}
+                input = {this.state.input}
+                handleInputChange = {this.handleInputChange}
+                 handleSearch = {this.handleSearch}
+                />       
+               
              
                 <UserOrder />
               
