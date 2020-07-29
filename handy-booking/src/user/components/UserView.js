@@ -19,6 +19,7 @@ import ErrorMessage from "../../UI/Error";
 import Trader from "./TraderList";
 import SearchBar from "./SearchBar";
 import "../css/userView.scss";
+import {fetchServicesByType} from '../../api/service'
 import {
 	SERVICE_URL
 } from "../../routes/URLMap";
@@ -33,6 +34,8 @@ class UserView extends Component {
         isLoading: false,
         pagination: {},
         limit: 8,
+        input: "",
+        isSearch: false,
     };
 } 
 
@@ -40,7 +43,20 @@ class UserView extends Component {
 handleChangeLimit = limit => {
   this.setState({limit});
 }
- 
+handleInputChange = event =>{
+	const value = event.target.value;
+	this.setState({ input : value });
+};
+
+handleSearch = () =>{
+  fetchServicesByType(this.state.input).then(this.updateService);
+  this.setState({isSearch: true});
+}
+updateService = (data) =>{
+	const services = data;
+		
+		this.setState({ services })
+}; 
 componentDidMount() {
   // fetchAllServices().then(services => {
   //   console.log(services);
@@ -87,15 +103,22 @@ componentDidMount() {
                 {/* <Services /> */}
               </Row>
               <Row>
-              <SearchBar />
+              
               {/* {this.state.services.map(service => (
                             <UserTask
                                 services={service}
                              
                             />
                         ))} */}
-                <UserTask services = {this.state.services} />       
-                <SearchBar />
+                <UserTask 
+                services = {this.state.services} 
+                isSearch = {this.state.isSearch}
+                input = {this.state.input}
+                input = {this.state.input}
+                handleInputChange = {this.handleInputChange}
+                 handleSearch = {this.handleSearch}
+                />       
+               
              
                 <UserOrder />
               

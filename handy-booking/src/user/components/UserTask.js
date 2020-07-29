@@ -10,6 +10,7 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import IconButton from '@material-ui/core/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import {fetchAllServices} from '../../api/service';
+import {fetchServicesByType} from '../../api/service';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import Collapse from '@material-ui/core/Collapse';
@@ -26,7 +27,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
 import ServiceItem from './ServiceItem';
+import SearchIcon from '@material-ui/icons/Search';
 
+import InputBase from '@material-ui/core/InputBase';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import "../css/userService.scss";
@@ -112,6 +115,9 @@ export default function Service(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(true);
   const [services, setServices] = React.useState([]);
+  const [input, setInput] = React.useState('');
+  const [searchTitle, setSearchTitle] = React.useState('SEARCH SERVICE BY TYPE');
+  const [isSearch, setisSearch] = React.useState(true);
  
 
   const handleClick = () => {
@@ -140,12 +146,46 @@ export default function Service(props) {
   const handleCloseBook = () => {
     setOpenBtnBook(false);
   };
+  const handleSerch = () => {
+    if(isSearch){
+      
+      fetchServicesByType(input).then(service => {
+            
+            setServices(service);
+            setSearchTitle("Clear");
+            setisSearch(isSearch === true ? false : true);
+          });
+         return;
+    } 
+    fetchAllServices().then(service => {
+     
+      setServices(service);
+      setisSearch(isSearch === true ? false : true);
+      setSearchTitle("SEARCH SERVICE BY TYPE");
+      setInput("");
+    });
+    
+  }
+
+  const handleInputChange = event =>{
+    setInput(event.target.value);
+  };
 
 
   useEffect(() => {
-
+    if (props.isSearch){
+      fetchServicesByType(props.input).then(service => {
+      
+        setServices(service);
+        console.log("search");
+      });
+  
+      return () => {
+          console.log("search")
+      };
+    }
     fetchAllServices().then(service => {
-      const service1 = service.map
+     
       setServices(service);
     });
 
@@ -155,6 +195,22 @@ export default function Service(props) {
      },[]);
   return (
     <div className={classes.root} >
+      <List component="nav" aria-label="title">
+     
+           
+                
+     <SearchIcon className="searchBarIcon"/>
+      
+     
+       
+     <InputBase className="searchBarText"
+     placeholder="Search…"
+     value = {input}
+     onChange={handleInputChange}
+   />
+  <Button variant="outlined" onClick={handleSerch}>{searchTitle}</Button>
+
+</List>
       <List component="nav" aria-label="title">
         <ListItem>
         <ListItemText primary="Service List >" />
@@ -191,6 +247,7 @@ export default function Service(props) {
 
             <ServiceItem
                services = {service}
+               isSearch = {props.isSearch}
                
             />
             </ListItem>   
@@ -241,7 +298,7 @@ export default function Service(props) {
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
-          <ListItemText primary="End-Lease" />
+          <ListItemText primary="llll" />
           <ListItemSecondaryAction>
                    
           </ListItemSecondaryAction>

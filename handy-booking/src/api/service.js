@@ -14,10 +14,10 @@ export const fetchAllServices = () => {
 
 };
 
-// export const fetchTradiesOrderById = id => {
-// 	const url = `${getApiTradiesUrlWithId()}/orders`;
-// 	return get(url).then(res => res.data.data);
-// };
+export const fetchServicesByType = (type) => {
+	const url = `${API_SERVICES_URL}/cleanType/search?type=${type}`;
+	return get(url).then(res => res.data);
+};
 
 // export const createTradies = tradies => {
 // 	return post(API_SERVICES_URL, tradies).then(res => res.data.data);
