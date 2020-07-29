@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,7 +9,7 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import IconButton from '@material-ui/core/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import DeleteIcon from '@material-ui/icons/Delete';
+import {fetchAllServices} from '../../api/service';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import Collapse from '@material-ui/core/Collapse';
@@ -25,11 +25,8 @@ import 'date-fns';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
-import ServiceType from './ServiceType';
-import RoomNumber from './RoomNumber';
-import HouseType from './HouseType';
-import Description from './Description';
-import Price from './Price';
+import ServiceItem from './ServiceItem';
+
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import "../css/userService.scss";
@@ -110,11 +107,12 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function Service() {
+export default function Service(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(true);
-
+  const [services, setServices] = React.useState([]);
+ 
 
   const handleClick = () => {
     setOpen(!open);
@@ -142,6 +140,19 @@ export default function Service() {
   const handleCloseBook = () => {
     setOpenBtnBook(false);
   };
+
+
+  useEffect(() => {
+
+    fetchAllServices().then(service => {
+      const service1 = service.map
+      setServices(service);
+    });
+
+    return () => {
+        console.log("close")
+    };
+     },[]);
   return (
     <div className={classes.root} >
       <List component="nav" aria-label="title">
@@ -154,25 +165,27 @@ export default function Service() {
        
         </ListItem>
 
-        <Divider />
-        <ListItem button onClick={handleClickOpenBook}>
-          <ListItemIcon>
-            <ListAltIcon />
-          </ListItemIcon>
-          <ListItemText primary="Normal" />
-         
-        </ListItem>
+       
        
       <Divider />
-      <ListItem button onClick={handleClickOpenBook}>
-          <ListItemIcon>
-            <ListAltIcon />
-          </ListItemIcon>
-          <ListItemText primary="End-Lease" />
-          <ListItemSecondaryAction>
-                   
-          </ListItemSecondaryAction>
-        </ListItem>
+     
+     
+      {services.map(service => (
+     
+ <ListItem >
+
+        <ServiceItem
+           services = {service}
+          
+        />
+ </ListItem>   
+ 
+      
+      ))}
+          
+      
+      
+        
         <ListItem>
         <ListItemSecondaryAction>
         <IconButton
@@ -228,7 +241,7 @@ export default function Service() {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Service type: Move Out Clean
+            Service type: {services.type}
           </Typography>
           <Typography gutterBottom>
             Service Room Numbers: 3
@@ -277,4 +290,4 @@ export default function Service() {
     </div>
     </div>
   );
-}
+  }
