@@ -129,13 +129,13 @@ return (
             Service type: {props.services.type}
           </Typography>
           <Typography gutterBottom>
-            Service Room Numbers: 3
+            Service Room Numbers: {props.services.numberOfServiceRoom}
           </Typography>
           <Typography gutterBottom>
-            Housing Type: apartment
+            Housing Type: {props.services.housingType}
           </Typography>
           <Typography gutterBottom>
-            Price: $100
+            Price: {props.services.servicePrice}
           </Typography>
 
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
