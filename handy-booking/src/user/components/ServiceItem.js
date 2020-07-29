@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -18,6 +18,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import useReactRouter from 'use-react-router';
 import {createOrder} from '../../api/order';
+
 
 import Grid from '@material-ui/core/Grid';
 import {
@@ -97,21 +98,50 @@ export default function ServiceItem(props) {
  
   const [openBtnBook, setOpenBtnBook] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-
-  const [address, setAddress] = React.useState('18 Mareat Street, TAS');
+  const selectedDateRef = useRef(null);
+  const orderRef = useRef({});
+  const [address, setAddress] = React.useState('18 Mare');
+  const addressRef = useRef(null);
 const [order, setOrder] = React.useState({
-    requireServiceTime: "test",
-    serviceAddress: address,
+    requireServiceTime: "",
+    serviceAddress: "",
     
  })
+
+ useEffect(() => {
+    selectedDateRef.current = selectedDate;
+    
+     },[selectedDate]);
+
+useEffect(() => {
+    setOrder({
+        requireServiceTime: selectedDateRef.current.toString(),
+    serviceAddress: address,
+  }
+    );
+    console.log(selectedDateRef.current)
+   
+
+},[]);
+useEffect(() => {
+    
+    addressRef.current = address;
+    
+
+},[address]);
+
+
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
   };
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    console.log(date);
-  };
+   const handleDateChange = (date) => {
+     setSelectedDate(date);
+   
  
+  };
+  
+
+
   const handleClickOpenBook = () => {
     setOpenBtnBook(true);
   };
@@ -124,9 +154,11 @@ const [order, setOrder] = React.useState({
 
 
   const handleBookOrder = () => {
-    createOrder(serviceId,clientId,order)
+   
+    createOrder(serviceId,clientId,{requireServiceTime: selectedDateRef.current.toString(),
+        serviceAddress: addressRef.current,})
         
-        
+    setOpenBtnBook(false);   
 
   };
 
