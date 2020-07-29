@@ -168,6 +168,7 @@
     "sweetalert2": "^8.13.0",
     "sweetalert2-react-content": "^1.1.0",
     "toastr": "^2.1.4",
+    "use-react-router": "^1.0.7",
     "validator": "^11.1.0"
   },
   "scripts": {
@@ -178,8 +179,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-      
-    
   },
   "browserslist": {
     "production": [

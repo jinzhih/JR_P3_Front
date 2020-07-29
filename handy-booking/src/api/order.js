@@ -1,4 +1,4 @@
-import { get, put, post, patch } from "./axios";
+import { get, put, post} from "./axios";
 import queryString from "query-string";
 
 const API_ORDERS_URL = "/orders";
@@ -20,9 +20,9 @@ export const fetchAllNewOrders = (page = 1, pageSize = 5) => {
 	}));
 };
 
-export const createOrder = (clientId, order) => {
-	const url = `${API_ORDERS_URL}?clientId=${clientId}`;
-	return post(url, order).then(res => res.data.data);
+export const createOrder = (serviceId, clientId, order) => {
+	const url = `${API_ORDERS_URL}?serviceId=${serviceId}&clientId=${clientId}`;
+	return post(url, order).then(res => res.data);
 };
 
 export const updateOrderById = (id, order) => {
@@ -30,21 +30,4 @@ export const updateOrderById = (id, order) => {
 	return put(url, order);
 };
 
-export const changeOrderStatusByClient = (orderId, clientId, status) => {
-	const url = `${getApiOrderUrlWithId(
-		orderId
-	)}/clients/${clientId}?status=${status}`;
-	return patch(url, status).then(res => res.data.data);
-};
 
-export const changeOrderStatusByBusiness = (orderId, businessId, status) => {
-	const url = `${getApiOrderUrlWithId(
-		orderId
-	)}/businesses/${businessId}?status=${status}`;
-	return patch(url, status).then(res => res.data.data);
-};
-
-export const addOrderComment = (orderId, data) => {
-	const url = `${getApiOrderUrlWithId(orderId)}/comments`;
-	return post(url, data).then(res => res.data.data);
-};
