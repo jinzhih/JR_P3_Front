@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import SearchIcon from '@material-ui/icons/Search';
 
 import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
 import "../css/searchBar.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +32,7 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function Order() {
+export default function Order(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(true);
@@ -54,9 +55,10 @@ export default function Order() {
                 
               <InputBase className="searchBarText"
               placeholder="Search…"
-              
+              value = {props.input}
+              onChange={props.handleInputChange}
             />
-           
+           <Button variant="outlined" onClick={props.handleSearch}>Search Service By Type</Button>
         
       </List>
        
