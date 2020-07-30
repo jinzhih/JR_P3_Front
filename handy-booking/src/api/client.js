@@ -5,8 +5,8 @@ const API_CLIENTS_URL = "/clients";
 const getApiClientUrlWithId = id => `${API_CLIENTS_URL}/${id}`;
 
 export const fetchClientById = id => {
-	const url = getApiClientUrlWithId(id);
-	return get(url).then(res => res.data.data);
+	const url = `${API_CLIENTS_URL}/${id}`;
+	return get(url).then(res => res.data);
 };
 
 export const fetchClientOrderById = id => {

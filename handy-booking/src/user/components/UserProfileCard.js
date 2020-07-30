@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect }from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -16,6 +16,9 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {removeToken} from '../../utils/auth';
+import { fetchClientById } from "../../api/client";
+import useReactRouter from 'use-react-router';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,10 +51,60 @@ const useStyles = makeStyles((theme) => ({
 const RecipeReviewCard = props => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  
+  const [clientName, setClientName] = React.useState("");
+  const [clientPhone, setClientPhone] = React.useState("");
+  const [clientEmail, setClientEmail] = React.useState("");
+
+  let clientId;
+  
+  clientId = localStorage.getItem("clientId");
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  useEffect(() => {
+     
+    fetchClientById(clientId).then(client => {
+      setClientName(client.clientName);
+      
+    }
+    
+
+    );
+  
+
+},[]);
+
+
+useEffect(() => {
+     
+  fetchClientById(clientId).then(client => {
+    setClientEmail(client.clientEmail);
+    
+  }
+  
+
+  );
+
+
+},[]);
+
+useEffect(() => {
+  
+ fetchClientById(clientId).then(client => {
+  setClientPhone(client.clientPhone);
+   
+ }
+ 
+
+ );
+
+
+},[]);
+
+
 
   return (
     <Card className={classes.root}>
@@ -69,14 +122,13 @@ const RecipeReviewCard = props => {
             <ExitToAppIcon />
           </IconButton>
         }
-        title="Jason"
-        subheader="From China"
+        title={clientName}
+        subheader={clientPhone}
       />
      
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          Living in Brisbane, Australia 
-          (17:59 UTC+10:00)
+          {clientEmail}
         </Typography>
       </CardContent>
      
