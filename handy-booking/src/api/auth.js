@@ -26,3 +26,9 @@ export const signupClient = data => {
 		return res.data;
 	});
 };
+export const signupTradie = data => {
+    console.log(data);
+	return post(API_TRADIE_URL, data).then(res => {
+		return res.data;
+	});
+};

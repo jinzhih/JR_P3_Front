@@ -141,10 +141,10 @@ handleChangeRole = event => {
                             Register User Successfully
                           </Alert>
                         ) : null}
-                        {this.props.registrationError &&
-                        this.props.registrationError ? (
+                        {this.state.error &&
+                        this.state.error ? (
                           <Alert color="danger">
-                            {this.props.registrationError}
+                            {this.state.error}
                           </Alert>
                         ) : null}
 
@@ -218,8 +218,8 @@ handleChangeRole = event => {
                             />
 
                             <FormControlLabel
-                              name="trader"
-                              value="trader"
+                              name="tradie"
+                              value="tradie"
                               control={<Radio color="primary" />}
                               label="Trader"
                               labelPlacement="start"

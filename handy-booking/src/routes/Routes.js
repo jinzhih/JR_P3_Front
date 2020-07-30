@@ -38,7 +38,7 @@ const Routes = () => {
            
             <Route exact path={HOMEPAGE_URL} component={HomeThree} />
             <Route exact path={SIGNUP_URL} component={UserSignupView} />
-            <Route exact path="users/tradie/signup/" component={TradieSignupView} />
+            <Route exact path="/users/tradie/signup/" component={TradieSignupView} />
             <Route exact path="/users/client/signup/" component={ClientSignupView} />
             <Route exact path="/neworders" component={NewOrder} />
             <Route exact path="/newbooks" component={NewBook} />
