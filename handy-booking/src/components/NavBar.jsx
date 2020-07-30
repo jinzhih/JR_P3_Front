@@ -121,7 +121,7 @@ class NavBar extends Component {
                                     offset={-70}
                                     duration={800}
                                     className="nav-link"
-                                    onClick={event =>  window.location.href='/signup/'}
+                                    onClick={event =>  window.location.href='/users/'}
                                  
                                 >
                                     SignUp

@@ -87,7 +87,7 @@ class Login extends React.Component {
                             this.props.history.replace(redirectTo);
 						} else {
                             setToken(data.token);
-                            setClientId(data.tradieId);
+                            setTradieId(data.tradieId);
                             const locationState = this.props.location.state;
                             const redirectTo =  `${TRADIE_BASE_URL}/${data.tradieId}` || (locationState && locationState.from);
                             this.props.history.replace(redirectTo);

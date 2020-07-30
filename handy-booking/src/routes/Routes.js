@@ -12,6 +12,7 @@ import OrderView from '../order/components/OrderView';
 //import HomeView from '../home/components/HomeView';
 import UserSignupView from '../signup/components/UserSignupView';
 import TradieSignupView from '../signup/components/TradieSignupView';
+import ClientSignupView from '../signup/components/ClientSignupView';
 import NewOrder from '../order/components/NewOrder';
 import NewBook from '../order/components/NewBook';
 import Login from "../pages/Authentication/Login";
@@ -37,7 +38,8 @@ const Routes = () => {
            
             <Route exact path={HOMEPAGE_URL} component={HomeThree} />
             <Route exact path={SIGNUP_URL} component={UserSignupView} />
-            <Route exact path="/signup/tradie" component={TradieSignupView} />
+            <Route exact path="users/tradie/signup/" component={TradieSignupView} />
+            <Route exact path="/users/client/signup/" component={ClientSignupView} />
             <Route exact path="/neworders" component={NewOrder} />
             <Route exact path="/newbooks" component={NewBook} />
             <Route exact path="/orders/:orderId" component={OrderView} />

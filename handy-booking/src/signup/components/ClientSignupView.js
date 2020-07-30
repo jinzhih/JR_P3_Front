@@ -1,42 +1,30 @@
 import React, { Component } from "react";
 import { Row, Col, CardBody, Card, Alert, Container } from "reactstrap";
-import { signup as signupFn } from "../../api/auth";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import { CLIENT_ROLE } from "../../utils/variables";
-import { setToken, 
-    
-    setClientId,
-    setTradieId,
-    
-} from '../../utils/auth';
-import { TRADIE_BASE_URL, CLIENT_BASE_URL} from '../../routes/URLMap';
+
+
+import { CLIENT_BASE_URL} from '../../routes/URLMap';
 // availity-reactstrap-validation
 import { AvForm, AvField } from "availity-reactstrap-validation";
 
 import { Link } from "react-router-dom";
-
-// import images
+import { signupClient as signupFn } from "../../api/auth";
+// import images signupClient
 import profileImg from "../../assets/images/profile-img.png";
 import logoImg from "../../assets/images/logo.svg";
 
-class Register extends Component {
+class ClientSignupView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        account: '',
-        password: '',
-        firstName: '',
-        lastName: '',
-        role:'client',
+        clientName: '',
+        clientDescription: '',
+        clientEmail: '',
+        clientPhone: '',
+        isSuccess: false,
         error: null,
 		isLoading: false,
     };
 
-   
   }
 
   handleChange = event => {
@@ -44,45 +32,35 @@ class Register extends Component {
     const value = event.target.value;
     this.setState({ [name]: value } );
 }
-handleChangeRole = event => {
-    const name = "role";
-    const value = event.target.value;
-    this.setState({ [name]: value } );
-}
 
 
+ 
 
   register = () => {
     const userInfo = {
-        account: this.state.account,
-        password: this.state.password,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        role: this.state.role
+        clientName: this.state.clientName,
+        clientDescription: this.state.clientDescription,
+        clientEmail: this.state.clientEmail,
+        clientPhone: this.state.clientPhone,
+      
     };
 
     this.setState({ isLoading: true }, () => {
         signupFn(userInfo)
         .then(data => {
-            this.setState({ isLoading: false }, () => {
-                if (data.role === CLIENT_ROLE) {
+            this.setState({ isLoading: false, isSuccess: true }, () => {
+                
                     
-                    setToken(data.token);
-                    setClientId(data.clientId);
+                 //   setToken(data.token);
+                 //   setClientId(data.clientId);
                     const locationState = this.props.location.state;
-                    const redirectTo =  `client/signup` || (locationState && locationState.from);
+                    const redirectTo =  `${CLIENT_BASE_URL}/${data._id}` || (locationState && locationState.from);
                     this.props.history.replace(redirectTo);
-                } else {
-                    setToken(data.token);
-                    setTradieId(data.tradieId);
-                    const locationState = this.props.location.state;
-                    const redirectTo =  `tradie/signup` || (locationState && locationState.from);
-                    this.props.history.replace(redirectTo);
-                }
+                
                
             });
         })
-        .catch(error => this.setState({ error, isLoading: false }));
+        .catch(error => this.setState({ error, isLoading: false, isSuccess: false }));
 });
 }
 
@@ -107,7 +85,7 @@ handleChangeRole = event => {
                     <Row>
                       <Col className="col-7">
                         <div className="text-primary p-4">
-                          <h5 className="text-primary">Free Register</h5>
+                          <h5 className="text-primary">Register as a client</h5>
                           <p>Get your Handy Booking account now.</p>
                         </div>
                       </Col>
@@ -134,17 +112,17 @@ handleChangeRole = event => {
                     <div className="p-2">
                       <AvForm
                         className="form-horizontal"
-                        
+                      
                       >
-                        {this.props.user && this.props.user ? (
+                        {this.state.isSuccess && this.state.isSuccess ? (
                           <Alert color="success">
                             Register User Successfully
                           </Alert>
                         ) : null}
-                        {this.props.registrationError &&
-                        this.props.registrationError ? (
+                        {this.state.error &&
+                        this.state.error ? (
                           <Alert color="danger">
-                            {this.props.registrationError}
+                            {this.state.error}
                           </Alert>
                         ) : null}
 
@@ -161,72 +139,45 @@ handleChangeRole = event => {
 
                         <div className="form-group">
                           <AvField
-                            name="account"
-                            label="Account"
+                            name="clientName"
+                            label="Client Name"
                             type="text"
                             required
-                            placeholder="Enter account"
+                            placeholder="Enter client name"
                             onChange={this.handleChange}
                           />
                         </div>
                         <div className="form-group">
                           <AvField
-                            name="password"
-                            label="Password"
-                            type="password"
+                            name="clientDescription"
+                            label="Client Description"
+                            type="text"
                             required
-                            placeholder="Enter Password"
+                            placeholder="Enter Description"
                             onChange={this.handleChange}
                           />
                         </div>
                         <div className="form-group">
                           <AvField
-                            name="firstName"
-                            label="Firstname"
-                            type="text"
+                            name="clientEmail"
+                            label="clientEmail"
+                            type="email"
                             required
-                            placeholder="Enter First Name"
+                            placeholder="Enter email"
                             onChange={this.handleChange}
                           />
                         </div>
                         <div className="form-group">
                           <AvField
-                            name="lastName"
-                            label="Lastname"
+                            name="clientPhone"
+                            label="clientPhone"
                             type="text"
                             required
-                            placeholder="Enter Last Name"
+                            placeholder="Enter phone number"
                             onChange={this.handleChange}
                           />
                         </div>
-                        <FormControl component="fieldset">
-                          <FormLabel component="legend">Role</FormLabel>
-                          <RadioGroup
-                            row
-                            aria-label="position"
-                            name="position"
-                            defaultValue="client"
-                           
-                          >
-                            <FormControlLabel
-                              name="client"
-                              value="client"
-                              control={<Radio color="primary" />}
-                              label="Client"
-                              labelPlacement="start"
-                              onChange={this.handleChangeRole}
-                            />
-
-                            <FormControlLabel
-                              name="trader"
-                              value="trader"
-                              control={<Radio color="primary" />}
-                              label="Trader"
-                              labelPlacement="start"
-                              onChange={this.handleChangeRole}
-                            />
-                          </RadioGroup>
-                        </FormControl>
+                        
                         
                         <div className="mt-4">
                           <button
@@ -234,13 +185,13 @@ handleChangeRole = event => {
                             className="btn btn-primary btn-block waves-effect waves-light"
                             type="submit"
                           >
-                            Next
+                            Register
                           </button>
                         </div>
 
                         <div className="mt-4 text-center">
                           <p className="mb-0">
-                            By registering you agree to the Skote{" "}
+                            By registering you agree to the Handy Booking{" "}
                             <Link to="#" className="text-primary">
                               Terms of Use
                             </Link>
@@ -261,10 +212,7 @@ handleChangeRole = event => {
                       Login
                     </Link>{" "}
                   </p>
-                  <p>
-                    © {new Date().getFullYear()} Skote. Crafted with{" "}
-                    <i className="mdi mdi-heart text-danger"></i> by Themesbrand
-                  </p>
+                 
                 </div>
               </Col>
             </Row>
@@ -276,4 +224,4 @@ handleChangeRole = event => {
 }
 
 
-export default Register;
+export default ClientSignupView;
