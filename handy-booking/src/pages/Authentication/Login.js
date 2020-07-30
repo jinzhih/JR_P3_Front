@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, Header, Input, Message, Segment } from 'semantic-ui-react';
-
+import { Link } from 'react-router-dom';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
 import { TRADIE_BASE_URL, CLIENT_BASE_URL, SIGNUP_URL} from '../../routes/URLMap';
 import { loginUser as loginUserFn } from '../../api/auth';
@@ -11,7 +11,7 @@ import { setToken,
 	     removeClientId,
 	     removeBusinessId
 } from '../../utils/auth';
-import { CLIENT_ROLE, TRADIE_ROLE, POST_ORDER_AT_HOMEPAGE } from "../../utils/variables";
+import { CLIENT_ROLE, TRADIE_ROLE } from "../../utils/variables";
 
 import './styles/login.scss';
 
@@ -171,6 +171,15 @@ class Login extends React.Component {
                             onClick={this.login2}
                         >
                             Login
+                        </Button>
+                        <Button
+                            as={Link} to={`${SIGNUP_URL}`} 
+                            size="large"
+                            fluid
+                            primary
+                            
+                        >
+                            Register   Now
                         </Button>
                     </Segment>
                 </Form>
