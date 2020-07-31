@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserManageBar() {
+export default function UserManageBar(props) {
   const classes = useStyles();
 
   return (
@@ -50,36 +50,32 @@ export default function UserManageBar() {
       </ListItem>
       <Divider variant="inset" component="li" />
   
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>
-            <ExitToAppIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Log out" />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem button>
+      <ListItem button onClick={props.handleOrderShow}>
         <ListItemAvatar>
           <Avatar>
             <WorkIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work"  />
-        <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <DeleteIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
+        <ListItemText primary="Order List" />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem button>
+      <ListItem button onClick={props.handleOrderHidden}>
+        <ListItemAvatar>
+          <Avatar>
+            <WorkIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Service List"  />
+       
+      </ListItem>
+      <Divider variant="inset" component="li" />
+      <ListItem button >
         <ListItemAvatar>
           <Avatar>
             <BeachAccessIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Vacation"  />
+        <ListItemText primary="Other"  />
       </ListItem>
     </List>
   );

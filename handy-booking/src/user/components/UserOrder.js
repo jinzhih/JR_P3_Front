@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,6 +18,8 @@ import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {fetchClientOrderById} from '../../api/client';
+import OrderItem from './OrderItem';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -48,6 +50,10 @@ export default function Order() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(true);
+  const [orders, setOrders] = React.useState([]);
+  let clientId;
+  
+    clientId = localStorage.getItem("clientId");
 
   const handleClick = () => {
     setOpen(!open);
@@ -55,6 +61,22 @@ export default function Order() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  useEffect(() => {
+
+    fetchClientOrderById(clientId).then(orders => {
+     
+      setOrders(orders);
+    });
+
+    console.log(orders);
+
+    return () => {
+        console.log("close")
+    };
+     },[]);
+
+
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="title">
@@ -62,18 +84,31 @@ export default function Order() {
         <ListItemText primary="My Order >" />
         </ListItem>
         <Divider />
+
+        {
+        orders.map((order) => {
+          return(
+            <ListItem key = {order._id}>
+
+            <OrderItem
+               orders = {order}
+            
+            />
+            </ListItem>   
+          )
+        }
+
+        )
+      }
+          
+      
+
         <ListItem button>
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
           <ListItemText primary="Status: Accept" />
-          <ListItemSecondaryAction>
-          <ButtonGroup size="small" aria-label="small outlined button group">
-             <Button>Accept</Button>
-             <Button>Finish</Button>
-             <Button>Cancel</Button>
-          </ButtonGroup>
-          </ListItemSecondaryAction>
+        
         </ListItem>
       
       <Divider />

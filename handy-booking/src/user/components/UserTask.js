@@ -214,10 +214,7 @@ export default function Service(props) {
       <List component="nav" aria-label="title">
         <ListItem>
         <ListItemText primary="Service List >" />
-      
-        <ListItemSecondaryAction>
-      
-          </ListItemSecondaryAction>
+   
        
         </ListItem>
 
@@ -225,19 +222,7 @@ export default function Service(props) {
        
       <Divider />
      
-     
-      {/* {services.map(service => (
-     
- <ListItem >
-
-        <ServiceItem
-           services = {service}
-           
-        />
- </ListItem>   
- 
-      
-      ))} */}
+  
 
 
       {

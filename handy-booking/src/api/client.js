@@ -10,8 +10,8 @@ export const fetchClientById = id => {
 };
 
 export const fetchClientOrderById = id => {
-	const url = `${getApiClientUrlWithId}/orders`;
-	return get(url).then(res => res.data.data);
+	const url = `${API_CLIENTS_URL}/${id}/orders`;
+	return get(url).then(res => res.data);
 };
 
 export const createClient = client => {
