@@ -52,8 +52,10 @@ class OrderView extends Component {
 	
    
   render() {
- 
+  if(this.state.order.service)
+  {console.log (this.state.order.service.type);  
     
+  }
 
     return (
       <React.Fragment>
@@ -70,14 +72,14 @@ class OrderView extends Component {
                   <Grid container spacing={3}>
          
          <Grid item xs={12} sm={8}>
-    <h2 >MOVE OUT CLEAN</h2>  
+    <h2 >{this.state.order.service && this.state.order.service.type}</h2>  
            <OrderGeneral />  
          </Grid>
          <Grid item xs={12} sm={4}>
            <Paper className = "order-view_price">
                <h5 >Price</h5>
-               <h1 >$138</h1>
-               <a href="#" className="btn btn-primary" className = "order-view_button">Order Status</a>
+               <h1 >{`AUD${this.state.order.service && this.state.order.service.servicePrice}`}</h1>
+    <a href="#" className="btn btn-primary" className = "order-view_button">{this.state.order.status}</a>
                <a href="#" className="btn btn-primary" className = "order-view_button">Pending</a>
            </Paper>
          </Grid>
