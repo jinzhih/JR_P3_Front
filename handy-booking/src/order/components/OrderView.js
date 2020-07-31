@@ -70,7 +70,7 @@ class OrderView extends Component {
                   <Grid container spacing={3}>
          
          <Grid item xs={12} sm={8}>
-    <h2 >{this.state.order.service.type}</h2>  
+    <h2 >ppp</h2>  
            <OrderGeneral />  
          </Grid>
          <Grid item xs={12} sm={4}>
