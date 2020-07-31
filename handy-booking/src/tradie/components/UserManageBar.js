@@ -5,17 +5,14 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
+
 import WorkIcon from '@material-ui/icons/Work';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import Divider from '@material-ui/core/Divider';
-//import ListItemIcon from '@material-ui/core/ListItemIcon';
-import IconButton from '@material-ui/core/IconButton';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import LockIcon from '@material-ui/icons/Lock';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserManageBar() {
+export default function UserManageBar(props) {
   const classes = useStyles();
 
   return (
@@ -50,36 +47,32 @@ export default function UserManageBar() {
       </ListItem>
       <Divider variant="inset" component="li" />
   
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>
-            <ExitToAppIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Log out" />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem button>
+      <ListItem button onClick={props.handleOrderShow}>
         <ListItemAvatar>
           <Avatar>
             <WorkIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Work"  />
-        <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <DeleteIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
+        <ListItemText primary="Order List" />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem button>
+      <ListItem button onClick={props.handleOrderHidden}>
+        <ListItemAvatar>
+          <Avatar>
+            <WorkIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="My Service"  />
+       
+      </ListItem>
+      <Divider variant="inset" component="li" />
+      <ListItem button >
         <ListItemAvatar>
           <Avatar>
             <BeachAccessIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Vacation"  />
+        <ListItemText primary="Other"  />
       </ListItem>
     </List>
   );

@@ -92,7 +92,7 @@ componentDidMount() {
       <React.Fragment>
         <NavBar />
         <Container>
-          <ErrorMessage error={null} />
+          
           <div className="user-banner"> </div>
           <Row>
             <Col className="user__profile">
@@ -119,8 +119,6 @@ componentDidMount() {
                     <UserProfileCard2 />
                 </div>
                
-              
-                {/* <Services /> */}
               </Row>
               <Row>
               { this.state.isServiceListShow ?<UserTask 
@@ -135,8 +133,6 @@ componentDidMount() {
                   
                 { this.state.isOrderListShow ?<UserOrder  /> : null }
                
-                
-                {/* <Services /> */}
               </Row>
               
             </Col>
