@@ -17,7 +17,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {removeToken} from '../../utils/auth';
 import { fetchClientById } from "../../api/client";
-import useReactRouter from 'use-react-router';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -111,7 +111,7 @@ useEffect(() => {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            J
+            C
           </Avatar>
         }
         action={

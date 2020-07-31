@@ -5,8 +5,8 @@ const API_TRADIES_URL = "/tradies";
 const getApiTradiesUrlWithId = id => `${API_TRADIES_URL}/${id}`;
 
 export const fetchTradiesById = id => {
-	const url = getApiTradiesUrlWithId(id);
-	return get(url).then(res => res.data.data);
+	const url = `${API_TRADIES_URL}/${id}`;
+	return get(url).then(res => res.data);
 };
 
 export const fetchAllTradies = () => {

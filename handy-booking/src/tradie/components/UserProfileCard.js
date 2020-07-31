@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect }from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -17,6 +17,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {withRouter} from "react-router";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {removeToken} from '../../utils/auth';
+import { fetchTradiesById } from "../../api/tradie";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,17 +50,79 @@ const useStyles = makeStyles((theme) => ({
 const RecipeReviewCard = props => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [tradieName, setTradieName] = React.useState("");
+  const [tradiePhone, setTradiePhone] = React.useState("");
+  const [tradieEmail, setTradieEmail] = React.useState("");
+  const [tradieAddress, setTradieAddress] = React.useState("");
+
+  let tradieId;
+  
+  tradieId = localStorage.getItem("tradieId");
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  useEffect(() => {
+     
+    fetchTradiesById(tradieId).then(tradie => {
+      setTradieName(tradie.tradieName);
+      
+    }
+    
+
+    );
+  
+
+},[]);
+
+useEffect(() => {
+     
+  fetchTradiesById(tradieId).then(tradie => {
+    setTradiePhone(tradie.tradiePhone);
+    
+  }
+  
+
+  );
+
+
+},[]);
+
+useEffect(() => {
+     
+  fetchTradiesById(tradieId).then(tradie => {
+    setTradieAddress(tradie.tradieAddress);
+    
+  }
+  
+
+  );
+
+
+},[]);
+
+useEffect(() => {
+     
+  fetchTradiesById(tradieId).then(tradie => {
+    setTradieEmail(tradie.tradieEmail);
+    
+  }
+  
+
+  );
+
+
+},[]);
+
+
 
   return (
     <Card className={classes.root}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            J
+            T
           </Avatar>
         }
         action={
@@ -69,14 +133,18 @@ const RecipeReviewCard = props => {
             <ExitToAppIcon />
           </IconButton>
         }
-        title="Jason"
-        subheader="From China"
+        title={tradieName}
+        subheader={tradiePhone}
       />
      
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          Living in Brisbane, Australia 
-          (17:59 UTC+10:00)
+          {tradieAddress}
+          
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+       
+          {tradieEmail}
         </Typography>
       </CardContent>
      
