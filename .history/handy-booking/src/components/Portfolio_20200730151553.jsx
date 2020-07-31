@@ -32,8 +32,8 @@ Portfolio.PropsTypes = {
 };
 Portfolio.defaultProps = {
     sectionTitle: "Our",
-    sectionTitleSpan: "Services",
+    sectionTitleSpan: "Portfolio",
     sectionContent:
-        "We can offer many kind of services which include bathroom cleaning, carpet cleaning, glass cleaning, kitchen cleaning and others."
+        "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
 };
 export default Portfolio;

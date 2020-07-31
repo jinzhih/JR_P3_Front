@@ -177,9 +177,9 @@ ContactUs.PropsTypes = {
 ContactUs.defaultProps = {
     sectionTitle: "Contact",
     sectionTitleSpan: "Us",
-    sectionContent: "If you have any questions or Suggestions, please feel free to contact us and we will get back to you as soon as possible.",
+    sectionContent: "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
     title: "Get in Touch",
-    content: "If you have any questions or Suggestions, please feel free to contact us and we will get back to you as soon as possible.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
     fblink: "#",
     twitterlink: "#",
     instagramlink: "#",
@@ -189,27 +189,27 @@ ContactUs.defaultProps = {
             boxicon: "icofont-location-pin",
             boxtitle: "Address",
             boxitem1link: "#",
-            boxitem1: "Sandford St, St Lucia, 4067",
+            boxitem1: "Exercisplan 4, 111 49",
             boxitem2link: "#",
-            boxitem2: "Australia, Brisbane",
+            boxitem2: "Stockholm, Sweden",
 
         },
         {
             boxicon: "icofont-mail",
             boxtitle: "Email",
             boxitem1link: "#",
-            boxitem1: "Info@cleaningExpert.com",
+            boxitem1: "Info@exolot.com",
             boxitem2link: "#",
-            boxitem2: "support@cleaningExpert.com",
+            boxitem2: "support@exolot.com",
 
         },
         {
             boxicon: "icofont-phone",
             boxtitle: "Phone",
             boxitem1link: "#",
-            boxitem1: "+61 423456789",
+            boxitem1: "+44 4587 458",
             boxitem2link: "#",
-            boxitem2: "+61 423456789",
+            boxitem2: "+44 4587 458",
 
         }
     ]

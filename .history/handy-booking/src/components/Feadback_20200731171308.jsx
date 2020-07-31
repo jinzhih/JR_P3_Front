@@ -83,25 +83,25 @@ Feadback.defaultProps = {
             image: require("../../src/assets/img/client1.jpg"),
             name: "Josh Buttler",
             profession: "Web Developer",
-            content: "I am very satisfied with the service, the room looks neat and tidy. Although the price is not very cheap, but the cleaning is great, it is worth the price.",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
         },
         {
             image: require("../../src/assets/img/client2.jpg"),
-            name: "Annie Liu",
-            profession: "Bank staff",
-            content: "I am very satisfied with the service, the room looks neat and tidy. Although the price is not very cheap, but the cleaning is great, it is worth the price.",
+            name: "Josh Buttler",
+            profession: "Web Developer",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
         },
         {
             image: require("../../src/assets/img/client3.jpg"),
-            name: "Si Zhao",
-            profession: "Engineer",
-            content: "I am very satisfied with the service, the room looks neat and tidy. Although the price is not very cheap, but the cleaning is great, it is worth the price.",
+            name: "Josh Buttler",
+            profession: "Web Developer",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
         },
         {
-            image: require("../../src/assets/img/client1.jpg"),
+            image: require("../../src/assets/img/client-avatar3.jpg"),
             name: "Josh Buttler",
-            profession: "Teacher",
-            content: "I am very satisfied with the service, the room looks neat and tidy. Although the price is not very cheap, but the cleaning is great, it is worth the price.",
+            profession: "Web Developer",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
         }
     ]
 

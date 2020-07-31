@@ -18,7 +18,7 @@ const smallImages = [
   require("../../src/assets/img/floor-cleaning.jpeg"),
   require("../../src/assets/img/furniture-cleaning.jpeg"),
   require("../../src/assets/img/glass-cleaning.jpeg"),
-  require("../../src/assets/img/kitchen-cleaning.jpeg")
+  require("../../src/assets/img/kitchen—cleaning.jpeg")
 ];
 
 class LightboxPage extends React.Component {
@@ -53,7 +53,7 @@ class LightboxPage extends React.Component {
                                 <Icofont icon="icofont-search-2"/>
                             </span>
                             </div>
-                            <h3>Bathroom cleaning</h3>
+                            <h3>BUSINESS CARD DEISGN</h3>
                     </figure>
                 </div>
             </div>
@@ -73,7 +73,7 @@ class LightboxPage extends React.Component {
                                 <Icofont icon="icofont-search-2"/>
                             </span>
                             </div>
-                            <h3>carpet cleaning</h3>
+                            <h3>BUSINESS CARD DEISGN</h3>
                     </figure>
                 </div>
             </div>
@@ -94,7 +94,7 @@ class LightboxPage extends React.Component {
                                 <Icofont icon="icofont-search-2"/>
                             </span>
                             </div>
-                            <h3>floor cleaning</h3>
+                            <h3>BUSINESS CARD DEISGN</h3>
                     </figure>
                 </div>
             </div>
@@ -104,7 +104,7 @@ class LightboxPage extends React.Component {
                     <figure>
                         <div className="work-image">
                             <img
-                            src={smallImages[3]}
+                            src={smallImages[2]}
                             alt="Gallery"
                             className="img-fluid"
                             />
@@ -115,7 +115,7 @@ class LightboxPage extends React.Component {
                                 <Icofont icon="icofont-search-2"/>
                             </span>
                             </div>
-                            <h3>furniture cleaning</h3>
+                            <h3>BUSINESS CARD DEISGN</h3>
                     </figure>
                 </div>
             </div>
@@ -136,7 +136,7 @@ class LightboxPage extends React.Component {
                                 <Icofont icon="icofont-search-2"/>
                             </span>
                             </div>
-                            <h3>glass cleaning</h3>
+                            <h3>BUSINESS CARD DEISGN</h3>
                     </figure>
                 </div>
             </div>
@@ -156,7 +156,7 @@ class LightboxPage extends React.Component {
                                 <Icofont icon="icofont-search-2"/>
                             </span>
                             </div>
-                            <h3>kitchen cleaning</h3>
+                            <h3>BUSINESS CARD DEISGN</h3>
                     </figure>
                 </div>
             </div>  
