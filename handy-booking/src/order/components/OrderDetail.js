@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef } from "react";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import OrderGeneral from './orderGeneral';
 import OrderDetailLeft from './OrderDetailLeft';
 import OrderDetailRight from './OrderDetailRight';
+import {fetchOrderById} from '../../api/order';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,18 +19,34 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-
-
-  export default function OrderDetailView(props) {
+  export default function OrderDetailView() {
     const classes = useStyles();
-    
-  
+    const orderID = localStorage.getItem("orderId");
+    const [order, setOrder] = React.useState({});
+    const orderRef = useRef(null);
+    useEffect(() => {
+      
+      console.log(orderID);
+      fetchOrderById(orderID).then(order => {
+       
+        setOrder(order);
+        
+      });
+
+       },[]);
+
+       useEffect(() => {
+        orderRef.current = order;
+       
+         },[order]);
+          console.log(orderRef.current);
+
     return (
       <div className={classes.root}>
         <Grid container spacing={3}>
          
           <Grid item xs={12} sm={8}>
-    <h2 >ppp</h2>  
+    <h2 ></h2>  
             <OrderGeneral />  
           </Grid>
           <Grid item xs={12} sm={4}>
