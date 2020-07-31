@@ -9,10 +9,7 @@ import About from "../../components/About";
 
 import OrderDetailView from "./OrderDetail";
 import '../css/order.scss';
-
-
-
-
+import {fetchOrderById} from '../../api/order';
 import Footer from "../../components/Footer";
 import ScrollUpBtn from "../../components/ScrollUpBtn";
 
@@ -24,10 +21,28 @@ class OrderView extends Component {
 		super(props);
 
 		this.state = {
+      order: {},
+      error: null,
+      isLoading: false,
+
 			
 		};
 	}
-	
+  
+  componentDidMount() {
+ 
+    this.setState({isLoading: true},() =>{
+      let OrderId;
+      OrderId = localStorage.getItem("orderId");
+      fetchOrderById(OrderId).then(order => {
+          console.log(OrderId);
+          console.log(order);
+          this.setState({ order, isLoading: false })
+        }).catch(error => {
+          this.setState({isLoading:false,error});
+        });
+    });
+  }
 		
 	
    
@@ -47,7 +62,9 @@ class OrderView extends Component {
                   <Row className = "order-view">
                   
     
-                    <OrderDetailView content = {this.props}/>  
+                    <OrderDetailView 
+                    order = {this.state.order}
+                    />  
                   </Row>
                   
               

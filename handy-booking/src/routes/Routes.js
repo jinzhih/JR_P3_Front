@@ -42,7 +42,7 @@ const Routes = () => {
             <Route exact path="/users/client/signup/" component={ClientSignupView} />
             <Route exact path="/neworders" component={NewOrder} />
             <Route exact path="/newbooks" component={NewBook} />
-            <Route exact path="/orders/:orderId" component={OrderView} />
+            <Route exact path={`${ORDER_BASE_URL}/:orderId`} component={OrderView} />
            
 
         </Switch>

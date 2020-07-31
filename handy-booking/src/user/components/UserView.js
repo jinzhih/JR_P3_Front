@@ -19,7 +19,7 @@ import ErrorMessage from "../../UI/Error";
 import Trader from "./TraderList";
 import SearchBar from "./SearchBar";
 import "../css/userView.scss";
-import {fetchServicesByType} from '../../api/service'
+import {fetchServicesByType} from '../../api/service';
 import {
 	SERVICE_URL
 } from "../../routes/URLMap";

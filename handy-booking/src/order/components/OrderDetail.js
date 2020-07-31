@@ -22,22 +22,22 @@ const useStyles = makeStyles((theme) => ({
 
   export default function OrderDetailView(props) {
     const classes = useStyles();
-    console.log(props.content);
+    
   
     return (
       <div className={classes.root}>
         <Grid container spacing={3}>
          
           <Grid item xs={12} sm={8}>
-    <h2 >House Cleaning</h2>  
+    <h2 >ppp</h2>  
             <OrderGeneral />  
           </Grid>
           <Grid item xs={12} sm={4}>
             <Paper className={classes.paper} className = "order-view_price">
                 <h5 >Price</h5>
                 <h1 >$138</h1>
-                <a href="#" class="btn btn-primary" className = "order-view_button">Order Status</a>
-                <a href="#" class="btn btn-primary" className = "order-view_button">Pending</a>
+                <a href="#" className="btn btn-primary" className = "order-view_button">Order Status</a>
+                <a href="#" className="btn btn-primary" className = "order-view_button">Pending</a>
             </Paper>
           </Grid>
     <Grid item xs={12} sm={6}>

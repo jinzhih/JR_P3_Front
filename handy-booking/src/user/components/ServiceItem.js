@@ -18,6 +18,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import useReactRouter from 'use-react-router';
 import {createOrder} from '../../api/order';
+import { 
+setOrderId
+} from '../../utils/auth';
 
 
 import Grid from '@material-ui/core/Grid';
@@ -26,6 +29,7 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
   } from '@material-ui/pickers';
+
  
 const styles = (theme) => ({
     root: {
@@ -82,7 +86,7 @@ const styles = (theme) => ({
       transform: 'rotate(180deg)',
     },
   }));
-const emails = ['username@gmail.com', 'user02@gmail.com'];
+
 
 
 export default function ServiceItem(props) {
@@ -95,13 +99,14 @@ export default function ServiceItem(props) {
     serviceId = props.services._id;
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
- 
+    const [isBookSuccess, setIsBookSuccess] = React.useState(false);
   const [openBtnBook, setOpenBtnBook] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
   const selectedDateRef = useRef(null);
   const orderRef = useRef({});
   const [address, setAddress] = React.useState('18 Mare');
   const addressRef = useRef(null);
+  const isBookSuccessRef = useRef(null);
 const [order, setOrder] = React.useState({
     requireServiceTime: "",
     serviceAddress: "",
@@ -130,6 +135,13 @@ useEffect(() => {
 
 },[address]);
 
+useEffect(() => {
+    
+  isBookSuccessRef.current = isBookSuccess;
+  
+
+},[isBookSuccess]);
+
 
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
@@ -156,10 +168,11 @@ useEffect(() => {
   const handleBookOrder = () => {
    
     createOrder(serviceId,clientId,{requireServiceTime: selectedDateRef.current.toString(),
-        serviceAddress: addressRef.current,})
-        
-    setOpenBtnBook(false);   
-
+        serviceAddress: addressRef.current,}).then( (order) => {
+          setOrderId(order._id);
+           history.push(`/orders/${order._id}`);
+        });
+     
   };
 
 return (
@@ -235,9 +248,14 @@ return (
           
         </DialogContent>
         <DialogActions>
+        <Button autoFocus onClick={handleCloseBook} color="primary">
+            CANCLE
+          </Button>
+       
           <Button autoFocus onClick={handleBookOrder} color="primary">
             BOOK
           </Button>
+        
         </DialogActions>
       </Dialog>
     </List>

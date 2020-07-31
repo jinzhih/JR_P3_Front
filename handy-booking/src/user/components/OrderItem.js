@@ -98,6 +98,7 @@ export default function ServiceItem(props) {
  
   const [openBtnBook, setOpenBtnBook] = React.useState(false);
   const [tradie, setTradie] = React.useState({});
+ 
   
   const handleClickOpenBook = () => {
     setOpenBtnBook(true);
@@ -142,10 +143,19 @@ return (
         </DialogTitle>
         <DialogContent dividers>
         <Typography gutterBottom>
-            Service Time: {props.orders.requireServiceTime}
+            Service Address: {props.orders.serviceAddress}
           </Typography>
           <Typography gutterBottom>
-          tradie: {props.orders.tradie}
+            Service Time: {props.orders.requireServiceTime}
+          </Typography>
+        <Typography gutterBottom>
+            Tradie Name: {props.orders.tradie.tradieName}
+          </Typography>
+        <Typography gutterBottom>
+            Tradie Phone: {props.orders.tradie.tradiePhone}
+          </Typography>
+          <Typography gutterBottom>
+          Tradie Email: {props.orders.tradie.tradieEmail}
           </Typography>
 
       
