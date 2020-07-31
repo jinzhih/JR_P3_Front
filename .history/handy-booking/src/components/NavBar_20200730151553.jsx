@@ -52,7 +52,7 @@ class NavBar extends Component {
                             offset={-70}
                             duration={800}
                         >
-                            <span>Cleaning </span>Expert
+                            <span>E</span>xolot
                         </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle
@@ -121,7 +121,7 @@ class NavBar extends Component {
                                     offset={-70}
                                     duration={800}
                                     className="nav-link"
-                                    onClick={event =>  window.location.href='/users/'}
+                                    onClick={event =>  window.location.href='/signup/'}
                                  
                                 >
                                     SignUp

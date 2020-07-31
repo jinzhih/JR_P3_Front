@@ -37,6 +37,10 @@ class HomeThree extends Component {
                 {/* Features: src/components/Features */}
                 <Feadback />
                 {/* Pricing: src/components/Pricing */}
+                <Pricing />
+                {/* News: src/components/News */}
+                <News />
+                {/* Work: src/components/Work */}
                 <Work />
                 {/* ContactUs: src/components/ContactUs */}
                 <ContactUs />

@@ -49,26 +49,26 @@ Welcome.defaultProps = {
     sectionTitle: "Welcome to",
     sectionTitleSpan: "Cleaning Expert",
     sectionContent:
-        "We are located in Brisbane, working for professional cleaning for 5 years. We could offer you a best service.",
+        "We are located in Brisbane, working for professional cleaning for 5 years. We could offer you a best service",
 
         welcomesData: [
         {
             icon: "icofont-magnet",
-            title: "About Us",
+            title: "Creative Design",
             content:
-                "We are one of Brisbane's top five cleaning companies. We have 5 years of experience and 100 employees. We can provide excellent service."
+                "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
         },
         {
             icon: "icofont-laptop-alt",
-            title: "What We Do",
+            title: "Friendly Codes",
             content:
-                "We offer 4 main types cleaning services which are Daily house cleaning, Office cleaning, Moving out cleaning and Bathroom and kitchen cleaning."
+                "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
         },
         {
             icon: "icofont-headphone-alt-2",
             title: "Fast Support",
             content:
-                "You can also contact us by following way:Online.By phone, mail, SMS and relay services.By visiting one of our Regional Business Centres."
+                "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
         }
     ]
 };

@@ -31,12 +31,20 @@ class HomeThree extends Component {
                 {/* Welcome: src/components/Welcome */}
                 <Welcome />
                 {/* About: src/components/About */}
+                <Services />
+                {/* Team: src/components/Team */}
                 <Team />
                 {/* Portfolio: src/components/Portfolio */}
                 <Portfolio />
                 {/* Features: src/components/Features */}
+                <Features />
+                {/* Feadback: src/components/Feadback */}
                 <Feadback />
                 {/* Pricing: src/components/Pricing */}
+                <Pricing />
+                {/* News: src/components/News */}
+                <News />
+                {/* Work: src/components/Work */}
                 <Work />
                 {/* ContactUs: src/components/ContactUs */}
                 <ContactUs />

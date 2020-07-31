@@ -87,7 +87,7 @@ Team.PropsTypes = {
 Team.defaultProps = {
     sectionTitle: "Expert",
     sectionTitleSpan: "Team",
-    sectionContent: "We provide many professional teams and you can find the best choice for you.",
+    sectionContent: "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.",
     animationimg1: require("../../src/assets/img/team1.jpeg"),
     animationimg2: require("../../src/assets/img/team2.jpeg"),
     animationimg3: require("../../src/assets/img/team3.jpeg"),
@@ -122,7 +122,7 @@ Team.defaultProps = {
         {
             img: require("../../src/assets/img/team3.jpeg"),
             name: "Maxwel Smith",
-            profession: "House Cleaning Team",
+            profession: "Web Developer",
             socialicon1: "icofont-facebook",
             sociallink1: "#",
             socialicon2: "icofont-twitter",
@@ -135,7 +135,7 @@ Team.defaultProps = {
         {
             img: require("../../src/assets/img/team4.jpeg"),
             name: "Lucy Doe",
-            profession: "Apartment Cleaning Team",
+            profession: "UX/UI Designer",
             socialicon1: "icofont-facebook",
             sociallink1: "#",
             socialicon2: "icofont-twitter",
@@ -174,7 +174,7 @@ Team.defaultProps = {
         {
             img: require("../../src/assets/img/team3.jpeg"),
             name: "Maxwel Smith",
-            profession: "House Cleaning Team",
+            profession: "Web Developer",
             socialicon1: "icofont-facebook",
             sociallink1: "#",
             socialicon2: "icofont-twitter",
@@ -187,7 +187,7 @@ Team.defaultProps = {
         {
             img: require("../../src/assets/img/team4.jpeg"),
             name: "Lucy Doe",
-            profession: "Apartment Cleaning Team",
+            profession: "UX/UI Designer",
             socialicon1: "icofont-facebook",
             sociallink1: "#",
             socialicon2: "icofont-twitter",
@@ -226,7 +226,7 @@ Team.defaultProps = {
         {
             img: require("../../src/assets/img/team3.jpeg"),
             name: "Maxwel Smith",
-            profession: "House Cleaning Team",
+            profession: "Web Developer",
             socialicon1: "icofont-facebook",
             sociallink1: "#",
             socialicon2: "icofont-twitter",
@@ -239,7 +239,7 @@ Team.defaultProps = {
         {
             img: require("../../src/assets/img/team4.jpeg"),
             name: "Lucy Doe",
-            profession: "Apartment Cleaning Team",
+            profession: "UX/UI Designer",
             socialicon1: "icofont-facebook",
             sociallink1: "#",
             socialicon2: "icofont-twitter",
@@ -249,7 +249,6 @@ Team.defaultProps = {
             socialicon4: "icofont-linkedin",
             sociallink4: "#",
         }
-        
         
     ]
 

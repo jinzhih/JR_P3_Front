@@ -35,7 +35,7 @@ class HomeThree extends Component {
                 {/* Portfolio: src/components/Portfolio */}
                 <Portfolio />
                 {/* Features: src/components/Features */}
-                <Feadback />
+                <Feedback />
                 {/* Pricing: src/components/Pricing */}
                 <Work />
                 {/* ContactUs: src/components/ContactUs */}

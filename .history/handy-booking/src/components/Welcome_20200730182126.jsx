@@ -68,7 +68,7 @@ Welcome.defaultProps = {
             icon: "icofont-headphone-alt-2",
             title: "Fast Support",
             content:
-                "You can also contact us by following way:Online.By phone, mail, SMS and relay services.By visiting one of our Regional Business Centres."
+                "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
         }
     ]
 };

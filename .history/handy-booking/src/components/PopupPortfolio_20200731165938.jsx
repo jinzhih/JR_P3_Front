@@ -156,7 +156,7 @@ class LightboxPage extends React.Component {
                                 <Icofont icon="icofont-search-2"/>
                             </span>
                             </div>
-                            <h3>kitchen cleaning</h3>
+                            <h3>BUSINESS CARD DEISGN</h3>
                     </figure>
                 </div>
             </div>  

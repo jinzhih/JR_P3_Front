@@ -29,7 +29,7 @@ Work.PropsTypes = {
 }
 Work.defaultProps = {
     workTitle: "Want to work with us?",
-    worksmallTitle: "Lets talk about you and us",
+    worksmallTitle: "Lets talk about project",
     btnlink: "#",
     btnName: "get Started",
     animationimg1: require("../../src/assets/img/3.png"),

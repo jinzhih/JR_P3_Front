@@ -62,13 +62,13 @@ Welcome.defaultProps = {
             icon: "icofont-laptop-alt",
             title: "What We Do",
             content:
-                "We offer 4 main types cleaning services which are Daily house cleaning, Office cleaning, Moving out cleaning and Bathroom and kitchen cleaning."
+                "We offer 4 main types cleaning services which are Daily house cleaning, Office cleaning, Move out cleaning and Bathroom and kitchen cleaning."
         },
         {
             icon: "icofont-headphone-alt-2",
             title: "Fast Support",
             content:
-                "You can also contact us by following way:Online.By phone, mail, SMS and relay services.By visiting one of our Regional Business Centres."
+                "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
         }
     ]
 };

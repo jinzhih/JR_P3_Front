@@ -207,9 +207,9 @@ ContactUs.defaultProps = {
             boxicon: "icofont-phone",
             boxtitle: "Phone",
             boxitem1link: "#",
-            boxitem1: "+61 423456789",
+            boxitem1: "+44 4587 458",
             boxitem2link: "#",
-            boxitem2: "+61 423456789",
+            boxitem2: "+44 4587 458",
 
         }
     ]
