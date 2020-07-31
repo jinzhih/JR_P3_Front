@@ -1,15 +1,15 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
+
 import IconButton from '@material-ui/core/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import DeleteIcon from '@material-ui/icons/Delete';
+import {fetchAllServices} from '../../api/service';
+import {fetchServicesByType} from '../../api/service';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import Collapse from '@material-ui/core/Collapse';
@@ -25,11 +25,10 @@ import 'date-fns';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
-import ServiceType from './ServiceType';
-import RoomNumber from './RoomNumber';
-import HouseType from './HouseType';
-import Description from './Description';
-import Price from './Price';
+import ServiceItem from './ServiceItem';
+import SearchIcon from '@material-ui/icons/Search';
+
+import InputBase from '@material-ui/core/InputBase';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import "../css/userService.scss";
@@ -110,11 +109,15 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function Service() {
+export default function Service(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(true);
-
+  const [services, setServices] = React.useState([]);
+  const [input, setInput] = React.useState('');
+  const [searchTitle, setSearchTitle] = React.useState('SEARCH SERVICE BY TYPE');
+  const [isSearch, setisSearch] = React.useState(true);
+ 
 
   const handleClick = () => {
     setOpen(!open);
@@ -142,44 +145,100 @@ export default function Service() {
   const handleCloseBook = () => {
     setOpenBtnBook(false);
   };
+  const handleSerch = () => {
+    if(isSearch){
+      
+      fetchServicesByType(input).then(service => {
+            
+            setServices(service);
+            setSearchTitle("Clear");
+            setisSearch(isSearch === true ? false : true);
+          });
+         return;
+    } 
+    fetchAllServices().then(service => {
+     
+      setServices(service);
+      setisSearch(isSearch === true ? false : true);
+      setSearchTitle("SEARCH SERVICE BY TYPE");
+      setInput("");
+    });
+    
+  }
+
+  const handleInputChange = event =>{
+    setInput(event.target.value);
+  };
+
+
+  useEffect(() => {
+    if (props.isSearch){
+      fetchServicesByType(props.input).then(service => {
+      
+        setServices(service);
+        console.log("search");
+      });
+  
+      return () => {
+          console.log("search")
+      };
+    }
+    fetchAllServices().then(service => {
+     
+      setServices(service);
+    });
+
+    return () => {
+        console.log("close")
+    };
+     },[]);
   return (
     <div className={classes.root} >
       <List component="nav" aria-label="title">
+     
+           
+                
+     <SearchIcon className="searchBarIcon"/>
+      
+     
+       
+     <InputBase className="searchBarText"
+     placeholder="Search…"
+     value = {input}
+     onChange={handleInputChange}
+   />
+  <Button variant="outlined" onClick={handleSerch}>{searchTitle}</Button>
+
+</List>
+      <List component="nav" aria-label="title">
         <ListItem>
-        <ListItemText primary="My Service >" />
-        <ListItemSecondaryAction>
-        <Button variant="outlined" edge="end" color="primary" onClick={handleClickOpen}>
-        New Service
-      </Button>
-          </ListItemSecondaryAction>
+        <ListItemText primary="Service List >" />
+   
        
         </ListItem>
-        <Divider />
-        <ListItem button>
-          <ListItemIcon>
-            <ListAltIcon />
-          </ListItemIcon>
-          <ListItemText primary="Normal" />
-          <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="add" onClick={handleClickOpenBook}>
-                      <PostAddIcon />
-                    </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      
+  
       <Divider />
-      <ListItem button>
-          <ListItemIcon>
-            <ListAltIcon />
-          </ListItemIcon>
-          <ListItemText primary="End-Lease" />
-          <ListItemSecondaryAction>
-                    <IconButton 
-          edge="end" aria-label="add">
-                      <PostAddIcon />
-                    </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
+    
+      {
+        services.map((service) => {
+          return(
+            <ListItem key = {service._id}>
+
+            <ServiceItem
+               services = {service}
+               isSearch = {props.isSearch}
+               
+            />
+            </ListItem>   
+          )
+        }
+
+        )
+      }
+          
+      
+      
+        
         <ListItem>
         <ListItemSecondaryAction>
         <IconButton
@@ -201,7 +260,7 @@ export default function Service() {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <List>
              <Divider />
-        <ListItem button>
+        <ListItem button onClick={handleClickOpenBook}>
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
@@ -218,62 +277,35 @@ export default function Service() {
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
-          <ListItemText primary="End-Lease" />
+          <ListItemText primary="llll" />
           <ListItemSecondaryAction>
-                    <IconButton 
-          edge="end" aria-label="add">
-                      <PostAddIcon />
-                    </IconButton>
+                   
           </ListItemSecondaryAction>
         </ListItem>
           </List>
        
       </Collapse>
-      <div>
-     
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={openBtn}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Post your service
-        </DialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-            Choose the service type
-          </Typography>
-          <ServiceType/>
-          <Typography gutterBottom>
-            Choose room numbers
-          </Typography>
-          <RoomNumber/>
-          <Typography gutterBottom>
-            choose housing types
-          </Typography>
-          <HouseType/>
-          <Typography gutterBottom>
-            Input some descriptions
-          </Typography>
-          <Description/>
-          <Typography gutterBottom>
-            Input price
-          </Typography>
-          <Price/>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Post
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    
 
     <div>
     <Dialog onClose={handleCloseBook} aria-labelledby="customized-dialog-title" open={openBtnBook}>
         <DialogTitle id="customized-dialog-title" onClose={handleCloseBook}>
-          Post your service
+          Book your service
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Choose the service type
+            Service type: {services.type}
           </Typography>
+          <Typography gutterBottom>
+            Service Room Numbers: 3
+          </Typography>
+          <Typography gutterBottom>
+            Housing Type: apartment
+          </Typography>
+          <Typography gutterBottom>
+            Price: $100
+          </Typography>
+
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
        
@@ -304,11 +336,11 @@ export default function Service() {
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleCloseBook} color="primary">
-            OK
+            BOOK
           </Button>
         </DialogActions>
       </Dialog>
     </div>
     </div>
   );
-}
+  }
