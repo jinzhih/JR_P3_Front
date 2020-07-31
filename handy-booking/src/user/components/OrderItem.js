@@ -18,6 +18,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import useReactRouter from 'use-react-router';
 import {createOrder} from '../../api/order';
+import {fetchTradiesById} from '../../api/tradie';
 
 
 import Grid from '@material-ui/core/Grid';
@@ -82,7 +83,7 @@ const styles = (theme) => ({
       transform: 'rotate(180deg)',
     },
   }));
-const emails = ['username@gmail.com', 'user02@gmail.com'];
+
 
 
 export default function ServiceItem(props) {
@@ -96,7 +97,7 @@ export default function ServiceItem(props) {
 
  
   const [openBtnBook, setOpenBtnBook] = React.useState(false);
- 
+  const [tradie, setTradie] = React.useState({});
   
   const handleClickOpenBook = () => {
     setOpenBtnBook(true);
@@ -105,6 +106,19 @@ export default function ServiceItem(props) {
     setOpenBtnBook(false);
   };
  
+  useEffect(() => {
+
+    fetchTradiesById(props.orders.tradie).then(tradie => {
+     
+        setTradie(tradie);
+    });
+
+    console.log(tradie);
+
+    return () => {
+        console.log("close")
+    };
+     },[]);
 
 return (
    
@@ -127,9 +141,11 @@ return (
           Order Detail
         </DialogTitle>
         <DialogContent dividers>
-       
+        <Typography gutterBottom>
+            Service Time: {props.orders.requireServiceTime}
+          </Typography>
           <Typography gutterBottom>
-            Price: {props.orders.status}
+          tradie: {props.orders.tradie}
           </Typography>
 
       
