@@ -19,7 +19,7 @@ import ErrorMessage from "../../UI/Error";
 import Trader from "./TraderList";
 import SearchBar from "./SearchBar";
 import "../css/userView.scss";
-import {fetchServicesByType} from '../../api/service'
+import {fetchServicesByType} from '../../api/service';
 import {
 	SERVICE_URL
 } from "../../routes/URLMap";
@@ -36,6 +36,8 @@ class UserView extends Component {
         limit: 8,
         input: "",
         isSearch: false,
+        isOrderListShow: false,
+        isServiceListShow: true,
     };
 } 
 
@@ -52,6 +54,19 @@ handleSearch = () =>{
   fetchServicesByType(this.state.input).then(this.updateService);
   this.setState({isSearch: true});
 }
+
+handleOrderShow = () =>{
+  
+  this.setState({isOrderListShow: true});
+  this.setState({isServiceListShow: false});
+}
+
+handleOrderHidden = () =>{
+
+  this.setState({isOrderListShow: false});
+  this.setState({isServiceListShow: true});
+}
+
 updateService = (data) =>{
 	const services = data;
 		
@@ -83,7 +98,12 @@ componentDidMount() {
             <Col className="user__profile">
               <Row className="user__profile">
                 <UserProfileCard />
-                <UserManageBar />
+                <UserManageBar 
+                isOrderListShow = {this.state.isOrderListShow}
+                handleOrderShow = {this.handleOrderShow}
+                handleOrderHidden = {this.handleOrderHidden}
+                
+                />
               </Row>
               <Row className="user__profile">
               
@@ -103,25 +123,18 @@ componentDidMount() {
                 {/* <Services /> */}
               </Row>
               <Row>
-              
-              {/* {this.state.services.map(service => (
-                            <UserTask
-                                services={service}
-                             
-                            />
-                        ))} */}
-                <UserTask 
+              { this.state.isServiceListShow ?<UserTask 
                 services = {this.state.services} 
                 isSearch = {this.state.isSearch}
                 input = {this.state.input}
                 input = {this.state.input}
                 handleInputChange = {this.handleInputChange}
                  handleSearch = {this.handleSearch}
-                />       
+                />  : null }
+            
+                  
+                { this.state.isOrderListShow ?<UserOrder  /> : null }
                
-             
-                <UserOrder />
-              
                 
                 {/* <Services /> */}
               </Row>

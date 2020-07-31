@@ -18,9 +18,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import useReactRouter from 'use-react-router';
 import {createOrder} from '../../api/order';
-import { 
-setOrderId
-} from '../../utils/auth';
+import {fetchTradiesById} from '../../api/tradie';
 
 
 import Grid from '@material-ui/core/Grid';
@@ -29,7 +27,6 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
   } from '@material-ui/pickers';
-
  
 const styles = (theme) => ({
     root: {
@@ -95,85 +92,34 @@ export default function ServiceItem(props) {
     let clientId;
   
     clientId = localStorage.getItem("clientId");
-    let serviceId;
-    serviceId = props.services._id;
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const [isBookSuccess, setIsBookSuccess] = React.useState(false);
-  const [openBtnBook, setOpenBtnBook] = React.useState(false);
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-  const selectedDateRef = useRef(null);
-  const orderRef = useRef({});
-  const [address, setAddress] = React.useState('18 Mare');
-  const addressRef = useRef(null);
-  const isBookSuccessRef = useRef(null);
-const [order, setOrder] = React.useState({
-    requireServiceTime: "",
-    serviceAddress: "",
-    
- })
-
- useEffect(() => {
-    selectedDateRef.current = selectedDate;
-    
-     },[selectedDate]);
-
-useEffect(() => {
-    setOrder({
-        requireServiceTime: selectedDateRef.current.toString(),
-    serviceAddress: address,
-  }
-    );
-    console.log(selectedDateRef.current)
-   
-
-},[]);
-useEffect(() => {
-    
-    addressRef.current = address;
-    
-
-},[address]);
-
-useEffect(() => {
-    
-  isBookSuccessRef.current = isBookSuccess;
-  
-
-},[isBookSuccess]);
-
-
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value);
-  };
-   const handleDateChange = (date) => {
-     setSelectedDate(date);
-   
  
-  };
+    const classes = useStyles();
+
+ 
+  const [openBtnBook, setOpenBtnBook] = React.useState(false);
+  const [tradie, setTradie] = React.useState({});
+ 
   
-
-
   const handleClickOpenBook = () => {
     setOpenBtnBook(true);
   };
   const handleCloseBook = () => {
     setOpenBtnBook(false);
   };
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+ 
+  useEffect(() => {
 
-
-  const handleBookOrder = () => {
-   
-    createOrder(serviceId,clientId,{requireServiceTime: selectedDateRef.current.toString(),
-        serviceAddress: addressRef.current,}).then( (order) => {
-          setOrderId(order._id);
-           history.push(`/orders/${order._id}`);
-        });
+    fetchTradiesById(props.orders.tradie).then(tradie => {
      
-  };
+        setTradie(tradie);
+    });
+
+    console.log(tradie);
+
+    return () => {
+        console.log("close")
+    };
+     },[]);
 
 return (
    
@@ -184,7 +130,7 @@ return (
           <ListItemIcon>
              <ListAltIcon />
            </ListItemIcon>
-        <ListItemText primary={props.services.type} />
+        <ListItemText primary={props.orders.status} />
       </ListItem>
      
       <Divider light />
@@ -193,69 +139,32 @@ return (
     
       <Dialog onClose={handleCloseBook} aria-labelledby="customized-dialog-title" open={openBtnBook}>
         <DialogTitle id="customized-dialog-title" onClose={handleCloseBook}>
-          Book your service
+          Order Detail
         </DialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
-            Service type: {props.services.type}
+        <Typography gutterBottom>
+            Service Address: {props.orders.serviceAddress}
           </Typography>
           <Typography gutterBottom>
-            Service Room Numbers: {props.services.numberOfServiceRoom}
+            Service Time: {props.orders.requireServiceTime}
+          </Typography>
+        <Typography gutterBottom>
+            Tradie Name: {props.orders.tradie.tradieName}
+          </Typography>
+        <Typography gutterBottom>
+            Tradie Phone: {props.orders.tradie.tradiePhone}
           </Typography>
           <Typography gutterBottom>
-            Housing Type: {props.services.housingType}
-          </Typography>
-          <Typography gutterBottom>
-            Price: {props.services.servicePrice}
+          Tradie Email: {props.orders.tradie.tradieEmail}
           </Typography>
 
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-       
-        <KeyboardDatePicker
-          margin="normal"
-          id="date-picker-dialog"
-          label="Date picker dialog"
-          format="MM/dd/yyyy"
-          value={selectedDate}
-          
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-        <KeyboardTimePicker
-          margin="normal"
-          id="time-picker"
-          label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change time',
-          }}
-        />
-        <TextField
-          id="standard-multiline-flexible"
-          label="Address"
-          multiline
-          rowsMax={4}
-          value={address}
-          onChange={handleAddressChange}
-        />
-
-      </Grid>
-    </MuiPickersUtilsProvider>
+      
           
         </DialogContent>
         <DialogActions>
-        <Button autoFocus onClick={handleCloseBook} color="primary">
-            CANCLE
+          <Button autoFocus  color="primary" onClick={handleCloseBook}>
+            OK
           </Button>
-       
-          <Button autoFocus onClick={handleBookOrder} color="primary">
-            BOOK
-          </Button>
-        
         </DialogActions>
       </Dialog>
     </List>

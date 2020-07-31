@@ -5,8 +5,8 @@ const API_ORDERS_URL = "/orders";
 const getApiOrderUrlWithId = id => `${API_ORDERS_URL}/${id}`;
 
 export const fetchOrderById = id => {
-	const url = getApiOrderUrlWithId(id);
-	return get(url).then(res => res.data.data);
+	const url = `${API_ORDERS_URL}/${id}`;
+	return get(url).then(res => res.data);
 };
 
 export const fetchAllNewOrders = (page = 1, pageSize = 5) => {
