@@ -65,7 +65,7 @@
     "i18next-browser-languagedetector": "^4.1.1",
     "jodit": "^3.2.46",
     "jodit-react": "^1.0.26",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jszip": "^3.2.2",
     "leaflet": "^1.6.0",
     "lodash.clonedeep": "^4.5.0",
